@@ -3,47 +3,9 @@ import { Card, CardContent } from "./ui/card.tsx";
 import { Badge } from "./ui/badge.tsx";
 import { ShoppingCart, Eye, Calculator } from "lucide-react";
 import { Link } from "react-router-dom";
+import { products, Product } from "../data/products.ts";
 
-// Import product images
-const sofaImage = "/assets/product-sofa.jpg";
-const tvImage = "/assets/product-tv.jpg";
-const appliancesImage = "/assets/product-appliances.jpg";
-
-const featuredProducts = [
-  {
-    id: 1,
-    name: "Juego de Living Moderno",
-    category: "Muebles",
-    price: 89999,
-    installmentPrice: 7499,
-    installments: 12,
-    image: sofaImage,
-    discount: 20,
-    isPromoted: true,
-  },
-  {
-    id: 2,
-    name: "Smart TV 55'' 4K Ultra HD",
-    category: "Electrónicos",
-    price: 129999,
-    installmentPrice: 10833,
-    installments: 12,
-    image: tvImage,
-    discount: 15,
-    isPromoted: false,
-  },
-  {
-    id: 3,
-    name: "Combo Cocina Completa",
-    category: "Electrodomésticos",
-    price: 199999,
-    installmentPrice: 16666,
-    installments: 12,
-    image: appliancesImage,
-    discount: 25,
-    isPromoted: true,
-  },
-];
+const featuredProducts = products.filter(p => p.isPromoted).slice(0, 3);
 
 const formatPrice = (price: number) => {
   return new Intl.NumberFormat('es-AR', {
@@ -53,16 +15,18 @@ const formatPrice = (price: number) => {
   }).format(price);
 };
 
-const ProductCard = ({ product }: { product: typeof featuredProducts[0] }) => {
+const ProductCard = ({ product }: { product: Product }) => {
   return (
     <Card className="group bg-card border-border hover:shadow-card transition-all duration-300 hover:scale-105 animate-scale-in">
       <div className="relative overflow-hidden">
         {/* Product Image */}
-        <img
-          src={product.image}
-          alt={product.name}
-          className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110"
-        />
+        <Link to={`/product/${product.id}`}>
+          <img
+            src={product.image}
+            alt={product.name}
+            className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110"
+          />
+        </Link>
         
         {/* Badges */}
         <div className="absolute top-3 left-3 flex flex-col gap-2">
@@ -80,22 +44,28 @@ const ProductCard = ({ product }: { product: typeof featuredProducts[0] }) => {
 
         {/* Quick Actions */}
         <div className="absolute top-3 right-3 flex flex-col gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-          <Button size="icon" variant="secondary" className="h-8 w-8 bg-white/90 hover:bg-white">
-            <Eye className="h-4 w-4" />
+          <Button size="icon" variant="secondary" className="h-8 w-8 bg-white/90 hover:bg-white" asChild>
+             <Link to={`/product/${product.id}`}>
+                <Eye className="h-4 w-4" />
+             </Link>
           </Button>
-          <Button size="icon" variant="secondary" className="h-8 w-8 bg-white/90 hover:bg-white">
-            <Calculator className="h-4 w-4" />
+          <Button size="icon" variant="secondary" className="h-8 w-8 bg-white/90 hover:bg-white" asChild>
+            <Link to="/simulator">
+              <Calculator className="h-4 w-4" />
+            </Link>
           </Button>
         </div>
       </div>
 
-      <CardContent className="p-4">
+      <CardContent className="p-4 flex flex-col h-[280px]">
         {/* Category */}
         <p className="text-sm text-muted-foreground mb-2">{product.category}</p>
         
         {/* Product Name */}
-        <h3 className="font-semibold text-lg mb-3 line-clamp-2 group-hover:text-primary transition-colors">
-          {product.name}
+        <h3 className="font-semibold text-lg mb-3 line-clamp-2 group-hover:text-primary transition-colors flex-grow">
+          <Link to={`/product/${product.id}`} className="hover:underline">
+            {product.name}
+          </Link>
         </h3>
 
         {/* Pricing */}
@@ -104,9 +74,9 @@ const ProductCard = ({ product }: { product: typeof featuredProducts[0] }) => {
             <span className="text-2xl font-bold text-primary">
               {formatPrice(product.price)}
             </span>
-            {product.discount > 0 && (
+            {product.discount > 0 && product.originalPrice && (
               <span className="text-sm text-muted-foreground line-through">
-                {formatPrice(product.price / (1 - product.discount / 100))}
+                {formatPrice(product.originalPrice)}
               </span>
             )}
           </div>
@@ -117,7 +87,7 @@ const ProductCard = ({ product }: { product: typeof featuredProducts[0] }) => {
         </div>
 
         {/* Actions */}
-        <div className="flex gap-2">
+        <div className="flex gap-2 mt-auto">
           <Button variant="default" size="sm" className="flex-1" asChild>
             <Link to={`/product/${product.id}`}>
               <ShoppingCart className="h-4 w-4" />

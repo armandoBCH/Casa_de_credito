@@ -8,81 +8,7 @@ import { Input } from "../components/ui/input.tsx";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../components/ui/select.tsx";
 import { Search, Filter, ShoppingCart, Eye, Calculator } from "lucide-react";
 import { Link } from "react-router-dom";
-
-// Import images
-const sofaImage = "/assets/product-sofa.jpg";
-const tvImage = "/assets/product-tv.jpg";
-const appliancesImage = "/assets/product-appliances.jpg";
-
-// Mock products data
-const allProducts = [
-  {
-    id: 1,
-    name: "Juego de Living Moderno 3+2+1",
-    category: "Muebles",
-    price: 89999,
-    installmentPrice: 7499,
-    installments: 12,
-    image: sofaImage,
-    discount: 20,
-    isPromoted: true,
-  },
-  {
-    id: 2,
-    name: "Smart TV 55'' 4K Ultra HD Samsung",
-    category: "Electrónicos",
-    price: 129999,
-    installmentPrice: 10833,
-    installments: 12,
-    image: tvImage,
-    discount: 15,
-    isPromoted: false,
-  },
-  {
-    id: 3,
-    name: "Combo Cocina Completa Acero Inoxidable",
-    category: "Electrodomésticos",
-    price: 199999,
-    installmentPrice: 16666,
-    installments: 12,
-    image: appliancesImage,
-    discount: 25,
-    isPromoted: true,
-  },
-  {
-    id: 4,
-    name: "Comedor 6 Sillas Moderno",
-    category: "Muebles",
-    price: 65999,
-    installmentPrice: 5499,
-    installments: 12,
-    image: sofaImage,
-    discount: 10,
-    isPromoted: false,
-  },
-  {
-    id: 5,
-    name: "Notebook Gamer 15.6'' RTX",
-    category: "Electrónicos",
-    price: 299999,
-    installmentPrice: 24999,
-    installments: 12,
-    image: tvImage,
-    discount: 0,
-    isPromoted: true,
-  },
-  {
-    id: 6,
-    name: "Heladera No Frost 364L",
-    category: "Electrodomésticos",
-    price: 189999,
-    installmentPrice: 15833,
-    installments: 12,
-    image: appliancesImage,
-    discount: 18,
-    isPromoted: false,
-  },
-];
+import { products as allProducts, Product } from "../data/products.ts";
 
 const categories = ["Todos", "Muebles", "Electrónicos", "Electrodomésticos"];
 const sortOptions = [
@@ -100,15 +26,17 @@ const formatPrice = (price: number) => {
   }).format(price);
 };
 
-const ProductCard = ({ product }: { product: typeof allProducts[0] }) => {
+const ProductCard = ({ product }: { product: Product }) => {
   return (
     <Card className="group bg-card border-border hover:shadow-card transition-all duration-300 hover:scale-105">
       <div className="relative overflow-hidden">
+        <Link to={`/product/${product.id}`}>
         <img
           src={product.image}
           alt={product.name}
           className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110"
         />
+        </Link>
         
         <div className="absolute top-3 left-3 flex flex-col gap-2">
           {product.isPromoted && (
@@ -137,10 +65,12 @@ const ProductCard = ({ product }: { product: typeof allProducts[0] }) => {
         </div>
       </div>
 
-      <CardContent className="p-4">
+      <CardContent className="p-4 flex flex-col h-[280px]">
         <p className="text-sm text-muted-foreground mb-2">{product.category}</p>
-        <h3 className="font-semibold text-lg mb-3 line-clamp-2 group-hover:text-primary transition-colors">
-          {product.name}
+        <h3 className="font-semibold text-lg mb-3 line-clamp-2 group-hover:text-primary transition-colors flex-grow">
+           <Link to={`/product/${product.id}`} className="hover:underline">
+            {product.name}
+          </Link>
         </h3>
 
         <div className="space-y-2 mb-4">
@@ -148,9 +78,9 @@ const ProductCard = ({ product }: { product: typeof allProducts[0] }) => {
             <span className="text-2xl font-bold text-primary">
               {formatPrice(product.price)}
             </span>
-            {product.discount > 0 && (
+            {product.discount > 0 && product.originalPrice && (
               <span className="text-sm text-muted-foreground line-through">
-                {formatPrice(product.price / (1 - product.discount / 100))}
+                {formatPrice(product.originalPrice)}
               </span>
             )}
           </div>
@@ -160,7 +90,7 @@ const ProductCard = ({ product }: { product: typeof allProducts[0] }) => {
           <p className="text-xs text-muted-foreground">Sin interés</p>
         </div>
 
-        <Button variant="default" size="sm" className="w-full" asChild>
+        <Button variant="default" size="sm" className="w-full mt-auto" asChild>
           <Link to={`/product/${product.id}`}>
             <ShoppingCart className="h-4 w-4" />
             Ver Producto
@@ -270,7 +200,7 @@ const Catalog = () => {
               <div
                 key={product.id}
                 className="animate-fade-in"
-                style={{ animationDelay: `${index * 0.1}s` }}
+                style={{ animationDelay: `${index * 0.05}s` }}
               >
                 <ProductCard product={product} />
               </div>
