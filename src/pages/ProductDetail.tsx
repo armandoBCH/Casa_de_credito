@@ -32,7 +32,6 @@ const ProductDetail = () => {
   const { addToCart } = useCart();
   
   useEffect(() => {
-    window.scrollTo(0, 0);
     const productId = parseInt(id || "0");
     const foundProduct = products.find((p) => p.id === productId) || null;
     setProduct(foundProduct);

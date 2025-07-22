@@ -1,82 +1,96 @@
 import { Button } from "./ui/button.tsx";
-import { ArrowRight, Star, CreditCard } from "lucide-react";
+import {
+  ArrowRight,
+  Calculator,
+  CheckCircle,
+  Shield,
+  Truck,
+} from "lucide-react";
 import { Link } from "react-router-dom";
 
-const heroImage = "/assets/hero-furniture.jpg";
+// Using a premium, bright, and modern interior image.
+const heroImage =
+  "https://images.unsplash.com/photo-1618220179428-22790b461013?auto=format&fit=crop&q=80&w=2127";
 
 const Hero = () => {
   return (
-    <section className="relative min-h-[600px] flex items-center bg-gradient-to-r from-primary/95 to-primary-light/90 overflow-hidden">
-      {/* Background Image */}
-      <div className="absolute inset-0">
-        <img
-          src={heroImage}
-          alt="Muebles y electrodomésticos de calidad"
-          className="w-full h-full object-cover opacity-20"
-        />
-        <div className="absolute inset-0 bg-gradient-hero"></div>
-      </div>
+    <section className="bg-background overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-12 lg:gap-8 items-center min-h-[calc(100vh-64px)] py-16 md:py-20">
+          {/* Text Content */}
+          <div className="lg:col-span-6 text-center lg:text-left">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight tracking-tighter animate-fade-in">
+              Transformá tu Hogar,
+              <span className="block text-primary drop-shadow-[0_2px_4px_hsl(var(--primary-glow))]">
+                Financiá tus Sueños.
+              </span>
+            </h1>
 
-      {/* Content */}
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-        <div className="max-w-2xl">
-          {/* Badge */}
-          <div className="flex items-center space-x-2 mb-6">
-            <div className="flex items-center space-x-1 bg-accent/20 backdrop-blur-sm rounded-full px-4 py-2 text-sm font-medium text-accent-light">
-              <Star className="h-4 w-4 fill-current" />
-              <span>Casa del Credito Confiable</span>
+            <p
+              className="mt-6 text-lg md:text-xl text-muted-foreground max-w-xl mx-auto lg:mx-0 animate-slide-up"
+              style={{ animationDelay: "0.2s" }}
+            >
+              Descubrí muebles y electrodomésticos de diseño con la financiación
+              más accesible y transparente del mercado. Calidad y confianza para
+              tu casa.
+            </p>
+
+            {/* CTA Buttons */}
+            <div
+              className="mt-10 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start animate-slide-up"
+              style={{ animationDelay: "0.4s" }}
+            >
+              <Button variant="hero" size="lg" asChild>
+                <Link to="/catalog">
+                  Explorar Catálogo
+                  <ArrowRight />
+                </Link>
+              </Button>
+              <Button variant="outline" size="lg" asChild>
+                <Link to="/simulator">
+                  <Calculator />
+                  Simular Crédito
+                </Link>
+              </Button>
+            </div>
+
+            {/* Trust Indicators */}
+            <div
+              className="mt-12 flex flex-wrap justify-center lg:justify-start items-center gap-x-6 gap-y-4 text-sm text-muted-foreground animate-fade-in"
+              style={{ animationDelay: "0.6s" }}
+            >
+              <div className="flex items-center gap-2">
+                <CheckCircle className="h-4 w-4 text-success" />
+                <span>Hasta 12 Cuotas Sin Interés</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Truck className="h-4 w-4 text-primary" />
+                <span>Entrega Gratuita</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Shield className="h-4 w-4 text-accent" />
+                <span>Garantía de Calidad</span>
+              </div>
             </div>
           </div>
 
-          {/* Main Heading */}
-          <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight animate-fade-in">
-            Muebles y Electrodomésticos
-            <span className="block text-accent">Sin Interés*</span>
-          </h1>
-
-          {/* Subheading */}
-          <p className="text-xl text-white/90 mb-8 leading-relaxed animate-slide-up">
-            Equipá tu hogar con los mejores productos y págalos en cómodas cuotas.
-            Aprobación inmediata y entrega rápida en toda la ciudad.
-          </p>
-
-          {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 animate-slide-up">
-            <Button variant="accent" size="lg" asChild>
-              <Link to="/catalog">
-                Ver Catálogo
-                <ArrowRight className="h-5 w-5" />
-              </Link>
-            </Button>
-             <Button variant="outline" size="lg" className="bg-white/10 border-white/20 text-white hover:bg-white/20" asChild>
-              <Link to="/contact">
-                <CreditCard className="h-5 w-5" />
-                Medios de Pago
-              </Link>
-            </Button>
-          </div>
-
-          {/* Trust Indicators */}
-          <div className="mt-12 flex flex-wrap items-center gap-8 text-white/80 text-sm animate-fade-in">
-            <div className="flex items-center space-x-2">
-              <div className="w-2 h-2 bg-accent rounded-full"></div>
-              <span>Pagá como quieras</span>
-            </div>
-            <div className="flex items-center space-x-2">
-              <div className="w-2 h-2 bg-accent rounded-full"></div>
-              <span>Hasta 12 cuotas sin interés</span>
-            </div>
-            <div className="flex items-center space-x-2">
-              <div className="w-2 h-2 bg-accent rounded-full"></div>
-              <span>Entrega gratuita</span>
+          {/* Image Content */}
+          <div
+            className="lg:col-span-6 mt-12 lg:mt-0 animate-scale-in"
+            style={{ animationDelay: "0.3s" }}
+          >
+            <div className="relative">
+              <img
+                src={heroImage}
+                alt="Moderno y elegante living amueblado"
+                className="rounded-3xl shadow-card aspect-[4/3] w-full object-cover"
+              />
+              <div className="absolute -bottom-4 -right-4 w-32 h-32 bg-primary/10 rounded-full blur-3xl -z-10 animate-pulse"></div>
+              <div className="absolute -top-4 -left-4 w-40 h-40 bg-accent/10 rounded-full blur-3xl -z-10 animate-pulse delay-500"></div>
             </div>
           </div>
         </div>
       </div>
-
-      {/* Floating Elements */}
-      <div className="absolute top-1/4 right-10 w-32 h-32 bg-accent/10 rounded-full blur-3xl animate-pulse"></div>
-      <div className="absolute bottom-1/4 right-1/4 w-20 h-20 bg-primary-glow/20 rounded-full blur-2xl animate-pulse delay-1000"></div>
     </section>
   );
 };

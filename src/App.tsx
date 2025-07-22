@@ -4,6 +4,7 @@ import { TooltipProvider } from "./components/ui/tooltip.tsx";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { CartProvider } from "./context/CartContext.tsx";
+import ScrollManager from "./components/ScrollManager.tsx";
 import Index from "./pages/Index.tsx";
 import Catalog from "./pages/Catalog.tsx";
 import Promotions from "./pages/Promotions.tsx";
@@ -23,6 +24,7 @@ const App = () => (
         <Toaster />
         <Sonner richColors position="top-right" />
         <BrowserRouter>
+          <ScrollManager />
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/catalog" element={<Catalog />} />
