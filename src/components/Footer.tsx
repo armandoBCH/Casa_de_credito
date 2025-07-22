@@ -7,9 +7,9 @@ const Footer = () => {
     <footer className="bg-primary text-primary-foreground">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Main Footer Content */}
-        <div className="py-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="py-16 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-12 gap-8">
           {/* Company Info */}
-          <div className="space-y-6">
+          <div className="space-y-6 lg:col-span-3">
             <Link to="/" className="flex items-center space-x-3">
               <img src="https://res.cloudinary.com/dbq5jp6jn/image/upload/v1753127509/Captura_de_pantalla_2025-07-21_164537_qjn0wq.png" alt="Casa del Credito" className="h-10 w-10" />
               <span className="font-bold text-xl">Casa del Credito</span>
@@ -18,17 +18,10 @@ const Footer = () => {
               Tu socio de confianza para equipar tu hogar. Ofrecemos los mejores productos
               con financiamiento accesible y sin complicaciones.
             </p>
-            <div className="flex space-x-4">
-               <Button variant="ghost" size="icon" className="text-primary-foreground hover:text-accent hover:bg-primary-light" asChild>
-                <a href="https://www.instagram.com/casadelcredito/" target="_blank" rel="noopener noreferrer">
-                  <Instagram className="h-5 w-5" />
-                </a>
-              </Button>
-            </div>
           </div>
 
           {/* Quick Links */}
-          <div className="space-y-6">
+          <div className="space-y-6 lg:col-span-2">
             <h3 className="font-semibold text-lg">Enlaces Rápidos</h3>
             <nav className="space-y-3">
               {[
@@ -50,7 +43,7 @@ const Footer = () => {
           </div>
 
           {/* Categories */}
-          <div className="space-y-6">
+          <div className="space-y-6 lg:col-span-2">
             <h3 className="font-semibold text-lg">Categorías</h3>
             <nav className="space-y-3">
               {[
@@ -73,7 +66,7 @@ const Footer = () => {
           </div>
 
           {/* Contact Info */}
-          <div className="space-y-6">
+          <div className="space-y-6 lg:col-span-3">
             <h3 className="font-semibold text-lg">Contacto</h3>
             <div className="space-y-4">
               <div className="flex items-start space-x-3">
@@ -109,15 +102,28 @@ const Footer = () => {
                   </p>
                 </div>
               </div>
-              
-               <div>
-                <p className="font-medium">Horarios de Atención</p>
-                <div className="text-sm text-primary-foreground/80 space-y-1 mt-1">
-                  <p>Lun - Vie: 9:00 - 19:00</p>
-                  <p>Sábados: 9:00 - 17:00</p>
-                  <p>Domingos: Cerrado</p>
+            </div>
+          </div>
+          
+          {/* Hours and Social */}
+          <div className="space-y-6 lg:col-span-2">
+            <div>
+                <h3 className="font-semibold text-lg mb-3">Horarios</h3>
+                <div className="space-y-2 text-primary-foreground/80">
+                    <p>Lun - Vie: 9:00 - 19:00</p>
+                    <p>Sábados: 9:00 - 17:00</p>
+                    <p>Domingos: Cerrado</p>
                 </div>
-              </div>
+            </div>
+            <div>
+                <h3 className="font-semibold text-lg mb-3">Redes</h3>
+                <div className="flex space-x-4">
+                    <Button variant="ghost" size="icon" className="text-primary-foreground hover:text-accent hover:bg-primary-light" asChild>
+                      <a href="https://www.instagram.com/casadelcredito/" target="_blank" rel="noopener noreferrer">
+                        <Instagram className="h-5 w-5" />
+                      </a>
+                    </Button>
+                </div>
             </div>
           </div>
         </div>
