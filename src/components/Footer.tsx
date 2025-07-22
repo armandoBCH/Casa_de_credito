@@ -11,7 +11,7 @@ const Footer = () => {
           {/* Company Info */}
           <div className="space-y-6">
             <Link to="/" className="flex items-center space-x-3">
-              <img src="/lovable-uploads/49914b77-2d53-4907-86de-257a71b67cb3.png" alt="Casa de Crédito" className="h-10 w-10" />
+              <img src="https://res.cloudinary.com/dbq5jp6jn/image/upload/v1753127509/Captura_de_pantalla_2025-07-21_164537_qjn0wq.png" alt="Casa de Crédito" className="h-10 w-10" />
               <span className="font-bold text-xl">Casa de Crédito</span>
             </Link>
             <p className="text-primary-foreground/80 leading-relaxed">
