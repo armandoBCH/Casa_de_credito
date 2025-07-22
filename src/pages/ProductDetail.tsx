@@ -11,7 +11,9 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "../components/ui/tabs.
 import { Table, TableBody, TableCell, TableRow } from "../components/ui/table.tsx";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "../components/ui/carousel.tsx";
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from "../components/ui/breadcrumb.tsx";
-import { Star, CheckCircle, Truck, Shield, MessageSquare, Plus, Minus, Calculator } from "lucide-react";
+import { Star, CheckCircle, Truck, Shield, MessageSquare, Plus, Minus, ShoppingCart } from "lucide-react";
+import { useCart } from "../context/CartContext.tsx";
+import { toast } from "sonner";
 
 const formatPrice = (price: number) => {
   return new Intl.NumberFormat('es-AR', {
@@ -27,14 +29,17 @@ const ProductDetail = () => {
   const [relatedProducts, setRelatedProducts] = useState<Product[]>([]);
   const [mainImage, setMainImage] = useState<string>("");
   const [quantity, setQuantity] = useState(1);
+  const { addToCart } = useCart();
   
   useEffect(() => {
+    window.scrollTo(0, 0);
     const productId = parseInt(id || "0");
     const foundProduct = products.find((p) => p.id === productId) || null;
     setProduct(foundProduct);
 
     if (foundProduct) {
       setMainImage(foundProduct.image);
+      setQuantity(1);
       const related = products.filter(
         (p) => p.category === foundProduct.category && p.id !== foundProduct.id
       ).slice(0, 5);
@@ -49,6 +54,22 @@ const ProductDetail = () => {
   const handleQuantityChange = (amount: number) => {
     setQuantity(prev => Math.max(1, prev + amount));
   };
+  
+  const handleAddToCart = () => {
+    if(product) {
+        addToCart(product, quantity);
+        toast.success(`${product.name} agregado al carrito`, {
+            description: `Cantidad: ${quantity}, Total: ${formatPrice(product.price * quantity)}`,
+            action: {
+                label: "Ver Carrito",
+                onClick: () => {
+                    // This requires a navigation instance. For simplicity, we'll use window location.
+                    window.location.href = '/cart';
+                }
+            }
+        });
+    }
+  }
 
   return (
     <div className="min-h-screen bg-background">
@@ -84,9 +105,9 @@ const ProductDetail = () => {
           {/* Image Gallery */}
           <div className="animate-fade-in">
             <Card className="overflow-hidden">
-              <img src={mainImage} alt={product.name} className="w-full h-auto object-cover aspect-square" />
+              <img src={mainImage} alt={product.name} className="w-full h-auto object-cover aspect-[4/3]" />
             </Card>
-            <div className="grid grid-cols-4 gap-2 mt-2">
+            <div className="grid grid-cols-5 gap-2 mt-2">
               {product.images.map((img, idx) => (
                 <Card 
                   key={idx} 
@@ -122,7 +143,7 @@ const ProductDetail = () => {
                   {product.originalPrice && <span className="text-xl text-muted-foreground line-through">{formatPrice(product.originalPrice)}</span>}
                 </div>
                 <div className="text-accent font-semibold text-lg">
-                  {product.installments} cuotas sin interés de {formatPrice(product.installmentPrice)}
+                  o {product.installments} cuotas sin interés de {formatPrice(product.installmentPrice)}
                 </div>
               </CardContent>
             </Card>
@@ -133,18 +154,16 @@ const ProductDetail = () => {
                 <span className="w-12 text-center font-semibold">{quantity}</span>
                 <Button variant="ghost" size="icon" onClick={() => handleQuantityChange(1)}><Plus className="h-4 w-4"/></Button>
               </div>
-              <Button variant="hero" size="lg" className="flex-1">
-                Solicitar Crédito
+              <Button variant="hero" size="lg" className="flex-1" onClick={handleAddToCart}>
+                <ShoppingCart className="h-5 w-5" /> Agregar al Carrito
               </Button>
             </div>
-            <div className="flex gap-4">
-                <Button variant="outline" size="lg" className="flex-1" asChild>
-                    <Link to="/simulator"><Calculator className="h-5 w-5"/> Simular Cuotas</Link>
-                </Button>
-                 <Button variant="secondary" size="lg" className="flex-1" asChild>
-                    <a href="https://wa.me/1234567890?text=Hola! Me interesa el producto: {product.name}"><MessageSquare className="h-5 w-5"/> Consultar</a>
-                </Button>
-            </div>
+            
+            <Button variant="secondary" size="lg" className="w-full" asChild>
+                <a href={`https://wa.me/1234567890?text=Hola! Me interesa el producto: ${product.name}`}>
+                    <MessageSquare className="h-5 w-5"/> Consultar por WhatsApp
+                </a>
+            </Button>
             
             <div className="mt-8 space-y-3 text-sm">
                 <div className="flex items-center gap-3"><CheckCircle className="h-5 w-5 text-success"/><span>Stock disponible</span></div>
@@ -161,7 +180,7 @@ const ProductDetail = () => {
             <TabsTrigger value="specs">Especificaciones</TabsTrigger>
             <TabsTrigger value="reviews">Opiniones ({product.reviewCount})</TabsTrigger>
           </TabsList>
-          <TabsContent value="description" className="prose max-w-none text-muted-foreground pt-4">
+          <TabsContent value="description" className="prose max-w-none text-muted-foreground pt-4 leading-loose">
             <p>{product.longDescription}</p>
           </TabsContent>
           <TabsContent value="specs" className="pt-4">
@@ -170,8 +189,8 @@ const ProductDetail = () => {
                 <TableBody>
                   {Object.entries(product.specs).map(([key, value]) => (
                     <TableRow key={key}>
-                      <TableCell className="font-semibold">{key}</TableCell>
-                      <TableCell>{value}</TableCell>
+                      <TableCell className="font-semibold text-foreground w-1/3">{key}</TableCell>
+                      <TableCell className="text-muted-foreground">{value}</TableCell>
                     </TableRow>
                   ))}
                 </TableBody>
@@ -194,20 +213,22 @@ const ProductDetail = () => {
                 <CarouselItem key={p.id} className="md:basis-1/2 lg:basis-1/3">
                   <div className="p-1">
                     <Card className="group bg-card border-border hover:shadow-card transition-all duration-300">
-                      <Link to={`/product/${p.id}`}>
-                        <img src={p.image} alt={p.name} className="w-full h-48 object-cover rounded-t-lg"/>
+                       <Link to={`/product/${p.id}`} className="block">
+                         <div className="overflow-hidden rounded-t-lg">
+                           <img src={p.image} alt={p.name} className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"/>
+                         </div>
+                        <CardContent className="p-4">
+                           <h3 className="font-semibold text-md mb-2 line-clamp-2">{p.name}</h3>
+                           <p className="text-lg font-bold text-primary">{formatPrice(p.price)}</p>
+                        </CardContent>
                       </Link>
-                      <CardContent className="p-4">
-                         <h3 className="font-semibold text-md mb-2 line-clamp-2">{p.name}</h3>
-                         <p className="text-lg font-bold text-primary">{formatPrice(p.price)}</p>
-                      </CardContent>
                     </Card>
                   </div>
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <CarouselPrevious />
-            <CarouselNext />
+            <CarouselPrevious className="-left-4" />
+            <CarouselNext className="-right-4" />
           </Carousel>
         </div>
       </main>

@@ -1,9 +1,11 @@
 import { Button } from "./ui/button.tsx";
 import { Card, CardContent } from "./ui/card.tsx";
 import { Badge } from "./ui/badge.tsx";
-import { ShoppingCart, Eye, Calculator } from "lucide-react";
+import { ShoppingCart, Eye } from "lucide-react";
 import { Link } from "react-router-dom";
 import { products, Product } from "../data/products.ts";
+import { useCart } from "../context/CartContext.tsx";
+import { toast } from "sonner";
 
 const featuredProducts = products.filter(p => p.isPromoted).slice(0, 3);
 
@@ -16,6 +18,15 @@ const formatPrice = (price: number) => {
 };
 
 const ProductCard = ({ product }: { product: Product }) => {
+  const { addToCart } = useCart();
+
+  const handleAddToCart = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    addToCart(product, 1);
+    toast.success(`${product.name} agregado al carrito!`);
+  };
+
   return (
     <Card className="group bg-card border-border hover:shadow-card transition-all duration-300 hover:scale-105 animate-scale-in">
       <div className="relative overflow-hidden">
@@ -49,10 +60,8 @@ const ProductCard = ({ product }: { product: Product }) => {
                 <Eye className="h-4 w-4" />
              </Link>
           </Button>
-          <Button size="icon" variant="secondary" className="h-8 w-8 bg-white/90 hover:bg-white" asChild>
-            <Link to="/simulator">
-              <Calculator className="h-4 w-4" />
-            </Link>
+          <Button size="icon" variant="secondary" className="h-8 w-8 bg-white/90 hover:bg-white" onClick={handleAddToCart}>
+            <ShoppingCart className="h-4 w-4" />
           </Button>
         </div>
       </div>
@@ -88,11 +97,9 @@ const ProductCard = ({ product }: { product: Product }) => {
 
         {/* Actions */}
         <div className="flex gap-2 mt-auto">
-          <Button variant="default" size="sm" className="flex-1" asChild>
-            <Link to={`/product/${product.id}`}>
+          <Button variant="default" size="sm" className="flex-1" onClick={handleAddToCart}>
               <ShoppingCart className="h-4 w-4" />
-              Ver Producto
-            </Link>
+              Agregar al Carrito
           </Button>
         </div>
       </CardContent>

@@ -1,17 +1,19 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "./ui/button.tsx";
-import { Menu, X, Phone, Calculator } from "lucide-react";
+import { Badge } from "./ui/badge.tsx";
+import { Menu, X, Phone, ShoppingCart } from "lucide-react";
+import { useCart } from "../context/CartContext.tsx";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
+  const { totalItems } = useCart();
 
   const navigation = [
     { name: "Inicio", href: "/" },
     { name: "Catálogo", href: "/catalog" },
     { name: "Promociones", href: "/promotions" },
-    { name: "Simulador", href: "/simulator" },
     { name: "Sobre Nosotros", href: "/about" },
     { name: "Contacto", href: "/contact" },
   ];
@@ -47,17 +49,22 @@ const Header = () => {
 
           {/* Action Buttons */}
           <div className="hidden md:flex items-center space-x-4">
-            <Button variant="outline" size="sm" asChild>
-              <Link to="/simulator">
-                <Calculator className="h-4 w-4" />
-                Simular Cuotas
-              </Link>
-            </Button>
-            <Button variant="accent" size="sm" asChild>
+             <Button variant="ghost" asChild>
               <a href="tel:+1234567890">
                 <Phone className="h-4 w-4" />
                 Contactar
               </a>
+            </Button>
+            <Button variant="outline" asChild>
+              <Link to="/cart" className="relative">
+                <ShoppingCart className="h-5 w-5" />
+                {totalItems > 0 && (
+                  <Badge variant="destructive" className="absolute -top-2 -right-2 h-5 w-5 justify-center rounded-full p-0 text-xs">
+                    {totalItems}
+                  </Badge>
+                )}
+                 <span className="sr-only">Ver carrito</span>
+              </Link>
             </Button>
           </div>
 
@@ -90,18 +97,18 @@ const Header = () => {
                   {item.name}
                 </Link>
               ))}
-              <div className="pt-4 pb-2 space-y-2">
+              <div className="pt-4 pb-2 space-y-2 border-t border-border">
                 <Button variant="outline" size="sm" className="w-full" asChild>
-                  <Link to="/simulator" onClick={() => setIsMenuOpen(false)}>
-                    <Calculator className="h-4 w-4" />
-                    Simular Cuotas
-                  </Link>
-                </Button>
-                <Button variant="accent" size="sm" className="w-full" asChild>
-                  <a href="tel:+1234567890">
+                  <a href="tel:+1234567890"  onClick={() => setIsMenuOpen(false)}>
                     <Phone className="h-4 w-4" />
                     Contactar
                   </a>
+                </Button>
+                <Button variant="accent" size="sm" className="w-full" asChild>
+                  <Link to="/cart" onClick={() => setIsMenuOpen(false)}>
+                     <ShoppingCart className="h-4 w-4" />
+                    Ver Carrito ({totalItems})
+                  </Link>
                 </Button>
               </div>
             </div>
