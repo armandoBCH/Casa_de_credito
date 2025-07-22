@@ -15,7 +15,7 @@ import {
   TrendingUp,
   Phone
 } from "lucide-react";
-import * as ReactRouterDom from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const values = [
   {
@@ -339,14 +339,14 @@ const About = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button variant="secondary" size="lg" asChild>
-                <ReactRouterDom.Link to="/catalog">
+                <Link to="/catalog">
                   Ver Productos
-                </ReactRouterDom.Link>
+                </Link>
               </Button>
               <Button variant="outline" size="lg" className="bg-white/10 border-white/20 text-white hover:bg-white/20" asChild>
-                <ReactRouterDom.Link to="/simulator">
+                <Link to="/simulator">
                   Simular Cuotas
-                </ReactRouterDom.Link>
+                </Link>
               </Button>
             </div>
           </div>

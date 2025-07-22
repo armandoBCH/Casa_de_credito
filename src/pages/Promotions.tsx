@@ -4,7 +4,7 @@ import { Card, CardContent } from "../components/ui/card.tsx";
 import { Badge } from "../components/ui/badge.tsx";
 import { Button } from "../components/ui/button.tsx";
 import { Calendar, Clock, Gift, Percent, Star, Tag } from "lucide-react";
-import * as ReactRouterDom from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const promotions = [
   {
@@ -143,10 +143,10 @@ const PromotionCard = ({ promotion }: { promotion: typeof promotions[0] }) => {
         {/* CTA */}
         <div className="flex gap-2">
           <Button variant="hero" size="sm" className="flex-1" asChild>
-            <ReactRouterDom.Link to="/catalog">
+            <Link to="/catalog">
               <Gift className="h-4 w-4" />
               Ver Productos
-            </ReactRouterDom.Link>
+            </Link>
           </Button>
           <Button variant="outline" size="sm" asChild>
             <a href="https://wa.me/1234567890?text=Hola! Me interesa la promoción: {promotion.title}">
@@ -238,9 +238,9 @@ const Promotions = () => {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button variant="secondary" size="lg" asChild>
-              <ReactRouterDom.Link to="/catalog">
+              <Link to="/catalog">
                 Ver Catálogo Completo
-              </ReactRouterDom.Link>
+              </Link>
             </Button>
             <Button variant="outline" size="lg" className="bg-white/10 border-white/20 text-white hover:bg-white/20" asChild>
               <a href="https://wa.me/1234567890?text=Hola! Quiero consultar sobre las promociones">

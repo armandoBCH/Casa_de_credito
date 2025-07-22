@@ -11,7 +11,7 @@ import {
   ArrowRight,
   Quote
 } from "lucide-react";
-import * as ReactRouterDom from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const benefits = [
   {
@@ -142,7 +142,7 @@ const Categories = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {categories.map((category, index) => (
-            <ReactRouterDom.Link
+            <Link
               key={category.name}
               to={category.href}
               className="group animate-slide-up"
@@ -167,16 +167,16 @@ const Categories = () => {
                   </div>
                 </div>
               </Card>
-            </ReactRouterDom.Link>
+            </Link>
           ))}
         </div>
 
         <div className="text-center mt-12">
           <Button variant="hero" size="lg" asChild>
-            <ReactRouterDom.Link to="/catalog">
+            <Link to="/catalog">
               Ver Catálogo Completo
               <ArrowRight className="h-5 w-5" />
-            </ReactRouterDom.Link>
+            </Link>
           </Button>
         </div>
       </div>
@@ -251,9 +251,9 @@ const CTA = () => {
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center animate-scale-in">
           <Button variant="secondary" size="lg" asChild>
-            <ReactRouterDom.Link to="/catalog">
+            <Link to="/catalog">
               Ver Productos
-            </ReactRouterDom.Link>
+            </Link>
           </Button>
           <Button variant="outline" size="lg" className="bg-white/10 border-white/20 text-white hover:bg-white/20" asChild>
             <a href="https://wa.me/1234567890?text=Hola! Quiero consultar sobre financiamiento">

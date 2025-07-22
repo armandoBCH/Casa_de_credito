@@ -1,8 +1,8 @@
-import * as ReactRouterDom from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
 
 const NotFound = () => {
-  const location = ReactRouterDom.useLocation();
+  const location = useLocation();
 
   useEffect(() => {
     console.error(

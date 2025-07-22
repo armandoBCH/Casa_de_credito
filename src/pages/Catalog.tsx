@@ -7,7 +7,7 @@ import { Badge } from "../components/ui/badge.tsx";
 import { Input } from "../components/ui/input.tsx";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../components/ui/select.tsx";
 import { Search, Filter, ShoppingCart, Eye, Calculator } from "lucide-react";
-import * as ReactRouterDom from "react-router-dom";
+import { Link } from "react-router-dom";
 
 // Import images
 const sofaImage = "/assets/product-sofa.jpg";
@@ -125,14 +125,14 @@ const ProductCard = ({ product }: { product: typeof allProducts[0] }) => {
 
         <div className="absolute top-3 right-3 flex flex-col gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
           <Button size="icon" variant="secondary" className="h-8 w-8 bg-white/90 hover:bg-white" asChild>
-            <ReactRouterDom.Link to={`/product/${product.id}`}>
+            <Link to={`/product/${product.id}`}>
               <Eye className="h-4 w-4" />
-            </ReactRouterDom.Link>
+            </Link>
           </Button>
           <Button size="icon" variant="secondary" className="h-8 w-8 bg-white/90 hover:bg-white" asChild>
-            <ReactRouterDom.Link to="/simulator">
+            <Link to="/simulator">
               <Calculator className="h-4 w-4" />
-            </ReactRouterDom.Link>
+            </Link>
           </Button>
         </div>
       </div>
@@ -161,10 +161,10 @@ const ProductCard = ({ product }: { product: typeof allProducts[0] }) => {
         </div>
 
         <Button variant="default" size="sm" className="w-full" asChild>
-          <ReactRouterDom.Link to={`/product/${product.id}`}>
+          <Link to={`/product/${product.id}`}>
             <ShoppingCart className="h-4 w-4" />
             Ver Producto
-          </ReactRouterDom.Link>
+          </Link>
         </Button>
       </CardContent>
     </Card>

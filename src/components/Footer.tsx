@@ -1,4 +1,4 @@
-import * as ReactRouterDom from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Phone, Mail, MapPin, Facebook, Instagram, Twitter } from "lucide-react";
 import { Button } from "./ui/button.tsx";
 
@@ -10,10 +10,10 @@ const Footer = () => {
         <div className="py-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Company Info */}
           <div className="space-y-6">
-            <ReactRouterDom.Link to="/" className="flex items-center space-x-3">
+            <Link to="/" className="flex items-center space-x-3">
               <img src="/lovable-uploads/49914b77-2d53-4907-86de-257a71b67cb3.png" alt="Casa de Crédito" className="h-10 w-10" />
               <span className="font-bold text-xl">Casa de Crédito</span>
-            </ReactRouterDom.Link>
+            </Link>
             <p className="text-primary-foreground/80 leading-relaxed">
               Tu socio de confianza para equipar tu hogar. Ofrecemos los mejores productos
               con financiamiento accesible y sin complicaciones.
@@ -43,13 +43,13 @@ const Footer = () => {
                 { name: "Sobre Nosotros", href: "/about" },
                 { name: "Contacto", href: "/contact" },
               ].map((link) => (
-                <ReactRouterDom.Link
+                <Link
                   key={link.name}
                   to={link.href}
                   className="block text-primary-foreground/80 hover:text-accent transition-colors duration-300"
                 >
                   {link.name}
-                </ReactRouterDom.Link>
+                </Link>
               ))}
             </nav>
           </div>
@@ -66,13 +66,13 @@ const Footer = () => {
                 "Decoración",
                 "Cocina y Comedor",
               ].map((category) => (
-                <ReactRouterDom.Link
+                <Link
                   key={category}
                   to={`/catalog?category=${category.toLowerCase().replace(/\s+/g, '-')}`}
                   className="block text-primary-foreground/80 hover:text-accent transition-colors duration-300"
                 >
                   {category}
-                </ReactRouterDom.Link>
+                </Link>
               ))}
             </nav>
           </div>
@@ -132,12 +132,12 @@ const Footer = () => {
               © 2024 Casa de Crédito. Todos los derechos reservados.
             </div>
             <div className="flex space-x-6 text-sm">
-              <ReactRouterDom.Link to="/privacy" className="text-primary-foreground/80 hover:text-accent transition-colors">
+              <Link to="/privacy" className="text-primary-foreground/80 hover:text-accent transition-colors">
                 Política de Privacidad
-              </ReactRouterDom.Link>
-              <ReactRouterDom.Link to="/terms" className="text-primary-foreground/80 hover:text-accent transition-colors">
+              </Link>
+              <Link to="/terms" className="text-primary-foreground/80 hover:text-accent transition-colors">
                 Términos y Condiciones
-              </ReactRouterDom.Link>
+              </Link>
             </div>
           </div>
         </div>

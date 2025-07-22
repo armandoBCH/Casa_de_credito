@@ -2,7 +2,7 @@ import { Button } from "./ui/button.tsx";
 import { Card, CardContent } from "./ui/card.tsx";
 import { Badge } from "./ui/badge.tsx";
 import { ShoppingCart, Eye, Calculator } from "lucide-react";
-import * as ReactRouterDom from "react-router-dom";
+import { Link } from "react-router-dom";
 
 // Import product images
 const sofaImage = "/assets/product-sofa.jpg";
@@ -119,10 +119,10 @@ const ProductCard = ({ product }: { product: typeof featuredProducts[0] }) => {
         {/* Actions */}
         <div className="flex gap-2">
           <Button variant="default" size="sm" className="flex-1" asChild>
-            <ReactRouterDom.Link to={`/product/${product.id}`}>
+            <Link to={`/product/${product.id}`}>
               <ShoppingCart className="h-4 w-4" />
               Ver Producto
-            </ReactRouterDom.Link>
+            </Link>
           </Button>
         </div>
       </CardContent>
@@ -160,9 +160,9 @@ const FeaturedProducts = () => {
         {/* CTA */}
         <div className="text-center">
           <Button variant="hero" size="lg" asChild>
-            <ReactRouterDom.Link to="/catalog">
+            <Link to="/catalog">
               Ver Todo el Catálogo
-            </ReactRouterDom.Link>
+            </Link>
           </Button>
         </div>
       </div>

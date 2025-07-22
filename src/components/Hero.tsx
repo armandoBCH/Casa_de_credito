@@ -1,6 +1,6 @@
 import { Button } from "./ui/button.tsx";
 import { ArrowRight, Calculator, Star } from "lucide-react";
-import * as ReactRouterDom from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const heroImage = "/assets/hero-furniture.jpg";
 
@@ -43,16 +43,16 @@ const Hero = () => {
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 animate-slide-up">
             <Button variant="accent" size="lg" asChild>
-              <ReactRouterDom.Link to="/catalog">
+              <Link to="/catalog">
                 Ver Catálogo
                 <ArrowRight className="h-5 w-5" />
-              </ReactRouterDom.Link>
+              </Link>
             </Button>
             <Button variant="outline" size="lg" className="bg-white/10 border-white/20 text-white hover:bg-white/20" asChild>
-              <ReactRouterDom.Link to="/simulator">
+              <Link to="/simulator">
                 <Calculator className="h-5 w-5" />
                 Simular Cuotas
-              </ReactRouterDom.Link>
+              </Link>
             </Button>
           </div>
 
