@@ -176,7 +176,7 @@ const ProductDetail = () => {
             
             <div className="mt-8 space-y-3 text-sm">
                 <div className="flex items-center gap-3"><CheckCircle className="h-5 w-5 text-success"/><span>Stock disponible</span></div>
-                <div className="flex items-center gap-3"><Truck className="h-5 w-5 text-primary"/><span>Entrega Gratuita en Olavarría y zona</span></div>
+                <div className="flex items-center gap-3"><Truck className="h-5 w-5 text-primary"/><span>Entrega a Domicilio en Olavarría y zona</span></div>
                 <div className="flex items-center gap-3"><Shield className="h-5 w-5 text-accent"/><span>{product.specs['Garantía'] || '12 meses'} de garantía</span></div>
             </div>
           </div>

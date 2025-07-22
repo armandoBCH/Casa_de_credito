@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import { Button } from "./ui/button.tsx";
 import { Card, CardContent } from "./ui/card.tsx";
 import { Badge } from "./ui/badge.tsx";
@@ -6,6 +7,7 @@ import { Link } from "react-router-dom";
 import { products, Product } from "../data/products.ts";
 import { useCart } from "../context/CartContext.tsx";
 import { toast } from "sonner";
+import ProductCardSkeleton from "./ProductCardSkeleton.tsx";
 
 const featuredProducts = products.filter(p => p.isPromoted).slice(0, 3);
 
@@ -28,7 +30,7 @@ const ProductCard = ({ product }: { product: Product }) => {
   };
 
   return (
-    <Card className="group bg-card border-border hover:shadow-card transition-all duration-300 hover:scale-105 animate-scale-in">
+    <Card className="group bg-card border-border hover:shadow-card transition-all duration-300 hover:scale-105 h-full">
       <div className="relative overflow-hidden">
         {/* Product Image */}
         <Link to={`/product/${product.id}`}>
@@ -66,7 +68,7 @@ const ProductCard = ({ product }: { product: Product }) => {
         </div>
       </div>
 
-      <CardContent className="p-4 flex flex-col h-[280px]">
+      <CardContent className="p-4 flex flex-col h-[calc(100%-192px)]">
         {/* Category */}
         <p className="text-sm text-muted-foreground mb-2">{product.category}</p>
         
@@ -108,6 +110,15 @@ const ProductCard = ({ product }: { product: Product }) => {
 };
 
 const FeaturedProducts = () => {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 1200); // Simulate network delay
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <section className="py-16 bg-muted/50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -123,15 +134,21 @@ const FeaturedProducts = () => {
 
         {/* Products Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-          {featuredProducts.map((product, index) => (
-            <div
-              key={product.id}
-              className={`animate-slide-up`}
-              style={{ animationDelay: `${index * 0.1}s` }}
-            >
-              <ProductCard product={product} />
-            </div>
-          ))}
+          {isLoading ? (
+            Array.from({ length: 3 }).map((_, index) => (
+              <ProductCardSkeleton key={index} />
+            ))
+          ) : (
+            featuredProducts.map((product, index) => (
+              <div
+                key={product.id}
+                className="animate-slide-up"
+                style={{ animationDelay: `${index * 0.1}s` }}
+              >
+                <ProductCard product={product} />
+              </div>
+            ))
+          )}
         </div>
 
         {/* CTA */}

@@ -1,10 +1,11 @@
 import Header from "../components/Header.tsx";
 import Hero from "../components/Hero.tsx";
 import FeaturedProducts from "../components/FeaturedProducts.tsx";
-import { Benefits, Categories, Testimonials, CTA } from "../components/HomeSections.tsx";
+import { Categories, Testimonials, CTA } from "../components/HomeSections.tsx";
 import Footer from "../components/Footer.tsx";
-import PromotionalBanners from "../components/PromotionalBanners.tsx";
-import PromotionsHighlight from "../components/PromotionsHighlight.tsx";
+import WhyChooseUs from "../components/WhyChooseUs.tsx";
+import HomePromotions from "../components/HomePromotions.tsx";
+import SimulatorCTA from "../components/SimulatorCTA.tsx";
 
 const Index = () => {
   return (
@@ -12,11 +13,11 @@ const Index = () => {
       <Header />
       <main>
         <Hero />
-        <Benefits />
-        <Categories />
         <FeaturedProducts />
-        <PromotionalBanners />
-        <PromotionsHighlight />
+        <WhyChooseUs />
+        <Categories />
+        <HomePromotions />
+        <SimulatorCTA />
         <Testimonials />
         <CTA />
       </main>

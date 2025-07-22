@@ -1,5 +1,4 @@
 import { Card, CardContent } from "./ui/card.tsx";
-import { Badge } from "./ui/badge.tsx";
 import { Button } from "./ui/button.tsx";
 import { 
   Shield, 
@@ -13,37 +12,10 @@ import {
 } from "lucide-react";
 import { Link } from "react-router-dom";
 
-const benefits = [
-  {
-    icon: Wallet,
-    title: "Pagá como quieras",
-    description: "Aceptamos tarjetas, transferencias con descuento y efectivo.",
-    color: "text-accent"
-  },
-  {
-    icon: CreditCard,
-    title: "Hasta 12 cuotas sin interés",
-    description: "Llevate lo que necesitás y pagalo cómodamente sin interés con tu tarjeta.",
-    color: "text-success"
-  },
-  {
-    icon: Truck,
-    title: "Entrega Gratuita",
-    description: "Llevamos tu compra hasta tu hogar sin costo adicional en Olavarría y zona.",
-    color: "text-primary"
-  },
-  {
-    icon: Shield,
-    title: "Garantía de Confianza",
-    description: "Todos nuestros productos cuentan con garantía oficial para tu tranquilidad.",
-    color: "text-warning"
-  }
-];
-
 const testimonials = [
   {
     name: "María García",
-    text: "Excelente atención y muy buenos precios. Pude equipar mi cocina completa en 12 cuotas sin interés.",
+    text: "Excelente atención y muy buenos precios. Pude equipar mi cocina completa en 12 cuotas sin interés. Los recomiendo 100%, súper confiables.",
     rating: 5,
     location: "Olavarría"
   },
@@ -55,7 +27,7 @@ const testimonials = [
   },
   {
     name: "Ana Martínez",
-    text: "Los recomiendo 100%. Precios justos y financiación accesible para toda la familia.",
+    text: "Los recomiendo. Precios justos y financiación accesible.",
     rating: 5,
     location: "Olavarría"
   }
@@ -88,45 +60,6 @@ const categories = [
   }
 ];
 
-const Benefits = () => {
-  return (
-    <section className="py-20 bg-muted/30">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16 animate-fade-in">
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-            ¿Por Qué Elegir Casa del Credito?
-          </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Más de 10 años de experiencia nos respaldan como líderes en financiamiento de muebles y electrodomésticos
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {benefits.map((benefit, index) => (
-            <Card
-              key={benefit.title}
-              className="text-center bg-card border-border hover:shadow-card transition-all duration-300 hover:scale-105 group animate-scale-in"
-              style={{ animationDelay: `${index * 0.1}s` }}
-            >
-              <CardContent className="p-8">
-                <div className={`inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 mb-6 group-hover:bg-primary/20 transition-colors ${benefit.color}`}>
-                  <benefit.icon className="h-8 w-8" />
-                </div>
-                <h3 className="text-xl font-semibold text-foreground mb-3 group-hover:text-primary transition-colors">
-                  {benefit.title}
-                </h3>
-                <p className="text-muted-foreground leading-relaxed">
-                  {benefit.description}
-                </p>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-};
-
 const Categories = () => {
   return (
     <section className="py-20">
@@ -149,35 +82,21 @@ const Categories = () => {
               style={{ animationDelay: `${index * 0.1}s` }}
             >
               <Card className="overflow-hidden border-border hover:shadow-card transition-all duration-300 hover:scale-105">
-                <div className="relative h-48 overflow-hidden">
+                <div className="relative h-64 overflow-hidden">
                   <img
                     src={category.image}
                     alt={category.name}
                     className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
                   <div className="absolute bottom-4 left-4 text-white">
                     <h3 className="font-semibold text-lg mb-1">{category.name}</h3>
                     <p className="text-sm opacity-90">{category.productCount} productos</p>
-                  </div>
-                  <div className="absolute top-4 right-4">
-                    <Badge className="bg-white/20 text-white border-white/20 backdrop-blur-sm">
-                      Ver Todo
-                    </Badge>
                   </div>
                 </div>
               </Card>
             </Link>
           ))}
-        </div>
-
-        <div className="text-center mt-12">
-          <Button variant="hero" size="lg" asChild>
-            <Link to="/catalog">
-              Ver Catálogo Completo
-              <ArrowRight className="h-5 w-5" />
-            </Link>
-          </Button>
         </div>
       </div>
     </section>
@@ -185,51 +104,66 @@ const Categories = () => {
 };
 
 const Testimonials = () => {
+  const featuredTestimonial = testimonials[0];
+  const otherTestimonials = testimonials.slice(1, 3);
+
   return (
-    <section className="py-20 bg-muted/30">
+    <section className="py-20 bg-background">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16 animate-fade-in">
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
             Lo Que Dicen Nuestros Clientes
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Miles de familias ya confían en nosotros para equipar sus hogares
+            La confianza de miles de familias es nuestro mayor orgullo.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {testimonials.map((testimonial, index) => (
-            <Card
-              key={testimonial.name}
-              className="bg-card border-border hover:shadow-card transition-all duration-300 animate-scale-in"
-              style={{ animationDelay: `${index * 0.2}s` }}
-            >
-              <CardContent className="p-8">
-                <Quote className="h-8 w-8 text-primary/30 mb-4" />
-                <p className="text-muted-foreground mb-6 leading-relaxed italic">
-                  "{testimonial.text}"
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+          {/* Featured Testimonial */}
+          <div className="animate-slide-up">
+            <Card className="bg-card border-border shadow-card h-full flex flex-col">
+              <CardContent className="p-8 flex-grow flex flex-col">
+                <Quote className="h-10 w-10 text-primary/30 mb-6" />
+                <p className="text-xl text-foreground mb-8 leading-relaxed italic flex-grow">
+                  "{featuredTestimonial.text}"
                 </p>
-                
-                {/* Rating */}
-                <div className="flex items-center gap-1 mb-4">
-                  {[...Array(testimonial.rating)].map((_, i) => (
-                    <Star key={i} className="h-4 w-4 text-accent fill-current" />
-                  ))}
-                </div>
-
-                <div className="border-t border-border pt-4">
-                  <p className="font-semibold text-foreground">{testimonial.name}</p>
-                  <p className="text-sm text-muted-foreground">{testimonial.location}</p>
+                <div className="flex items-center justify-between">
+                  <div className="border-t border-border pt-4 flex-grow">
+                    <p className="font-semibold text-lg text-primary">{featuredTestimonial.name}</p>
+                    <p className="text-sm text-muted-foreground">{featuredTestimonial.location}</p>
+                  </div>
+                  <div className="flex items-center gap-1">
+                    {[...Array(featuredTestimonial.rating)].map((_, i) => (
+                      <Star key={i} className="h-5 w-5 text-accent fill-current" />
+                    ))}
+                  </div>
                 </div>
               </CardContent>
             </Card>
-          ))}
-        </div>
-
-        <div className="text-center mt-12">
-          <div className="flex items-center justify-center gap-2 text-muted-foreground">
-            <CheckCircle className="h-5 w-5 text-success" />
-            <span>+5,000 familias satisfechas</span>
+          </div>
+          
+          {/* Other Testimonials */}
+          <div className="space-y-8">
+            {otherTestimonials.map((testimonial, index) => (
+              <div key={testimonial.name} className="animate-slide-up" style={{ animationDelay: `${(index + 1) * 0.15}s` }}>
+                <Card className="bg-card border-border hover:shadow-card transition-shadow duration-300">
+                  <CardContent className="p-6">
+                    <div className="flex items-start gap-4">
+                       <p className="text-muted-foreground italic">"{testimonial.text}"</p>
+                    </div>
+                    <div className="flex justify-between items-center mt-4">
+                        <div className="flex items-center gap-0.5">
+                            {[...Array(testimonial.rating)].map((_, i) => (
+                                <Star key={i} className="h-4 w-4 text-accent fill-current" />
+                            ))}
+                        </div>
+                        <p className="font-semibold text-right text-foreground">- {testimonial.name}</p>
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
+            ))}
           </div>
         </div>
       </div>
@@ -237,9 +171,10 @@ const Testimonials = () => {
   );
 };
 
+
 const CTA = () => {
   return (
-    <section className="py-20 bg-gradient-primary text-white overflow-hidden relative">
+    <section className="py-20 bg-gradient-to-br from-primary to-primary-light text-white overflow-hidden relative">
       <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3')] opacity-10 bg-cover bg-center"></div>
       <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <h2 className="text-3xl md:text-4xl font-bold mb-6 animate-fade-in">
@@ -255,30 +190,14 @@ const CTA = () => {
             </Link>
           </Button>
           <Button variant="outline" size="lg" className="bg-white/10 border-white/20 text-white hover:bg-white/20" asChild>
-            <a href="https://wa.me/5492284598212?text=Hola! Quiero hacer una consulta">
+            <Link to="/contact">
               Contactar Ahora
-            </a>
+            </Link>
           </Button>
-        </div>
-
-        {/* Trust indicators */}
-        <div className="mt-12 flex flex-wrap justify-center items-center gap-8 text-white/80 text-sm">
-          <div className="flex items-center gap-2">
-            <CheckCircle className="h-4 w-4" />
-            <span>10 años de experiencia</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <CheckCircle className="h-4 w-4" />
-            <span>+5,000 clientes</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <CheckCircle className="h-4 w-4" />
-            <span>Compra 100% segura</span>
-          </div>
         </div>
       </div>
     </section>
   );
 };
 
-export { Benefits, Categories, Testimonials, CTA };
+export { Categories, Testimonials, CTA };

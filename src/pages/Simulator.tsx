@@ -204,7 +204,7 @@ const Simulator = () => {
                   <ul className="space-y-2 text-sm">
                     <li className="flex items-center gap-2">
                       <CheckCircle className="h-3 w-3 text-success" />
-                      Entrega gratuita en Capital y GBA
+                      Entrega a domicilio en CABA y GBA
                     </li>
                     <li className="flex items-center gap-2">
                       <CheckCircle className="h-3 w-3 text-success" />

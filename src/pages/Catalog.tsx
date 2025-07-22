@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Header from "../components/Header.tsx";
 import Footer from "../components/Footer.tsx";
 import { Button } from "../components/ui/button.tsx";
@@ -11,6 +11,7 @@ import { Link } from "react-router-dom";
 import { products as allProducts, Product } from "../data/products.ts";
 import { useCart } from "../context/CartContext.tsx";
 import { toast } from "sonner";
+import ProductCardSkeleton from "../components/ProductCardSkeleton.tsx";
 
 const categories = ["Todos", "Muebles", "Electrónicos", "Electrodomésticos"];
 const sortOptions = [
@@ -38,7 +39,7 @@ const ProductCard = ({ product }: { product: Product }) => {
     };
 
   return (
-    <Card className="group bg-card border-border hover:shadow-card transition-all duration-300 hover:scale-105">
+    <Card className="group bg-card border-border hover:shadow-card transition-all duration-300 hover:scale-105 h-full">
       <div className="relative overflow-hidden">
         <Link to={`/product/${product.id}`}>
         <img
@@ -73,7 +74,7 @@ const ProductCard = ({ product }: { product: Product }) => {
         </div>
       </div>
 
-      <CardContent className="p-4 flex flex-col h-[280px]">
+      <CardContent className="p-4 flex flex-col h-[calc(100%-192px)]">
         <p className="text-sm text-muted-foreground mb-2">{product.category}</p>
         <h3 className="font-semibold text-lg mb-3 line-clamp-2 group-hover:text-primary transition-colors flex-grow">
            <Link to={`/product/${product.id}`} className="hover:underline">
@@ -111,6 +112,13 @@ const Catalog = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("Todos");
   const [sortBy, setSortBy] = useState("name");
+  const [isLoading, setIsLoading] = useState(true);
+  
+  useEffect(() => {
+    const timer = setTimeout(() => setIsLoading(false), 1000); // Simulate loading
+    return () => clearTimeout(timer);
+  }, []);
+
 
   // Filter and sort products
   const filteredProducts = allProducts
@@ -195,12 +203,18 @@ const Catalog = () => {
         {/* Results Count */}
         <div className="mb-6">
           <p className="text-muted-foreground">
-            Mostrando {filteredProducts.length} producto{filteredProducts.length !== 1 ? 's' : ''}
+            {!isLoading && `Mostrando ${filteredProducts.length} producto${filteredProducts.length !== 1 ? 's' : ''}`}
           </p>
         </div>
 
         {/* Products Grid */}
-        {filteredProducts.length > 0 ? (
+        {isLoading ? (
+           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            {Array.from({ length: 8 }).map((_, index) => (
+              <ProductCardSkeleton key={index} />
+            ))}
+          </div>
+        ) : filteredProducts.length > 0 ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             {filteredProducts.map((product, index) => (
               <div

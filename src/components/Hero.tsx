@@ -65,7 +65,7 @@ const Hero = () => {
               </div>
               <div className="flex items-center gap-2">
                 <Truck className="h-4 w-4 text-primary" />
-                <span>Entrega Gratuita</span>
+                <span>Entrega a Domicilio</span>
               </div>
               <div className="flex items-center gap-2">
                 <Shield className="h-4 w-4 text-accent" />
