@@ -144,7 +144,7 @@ const ProductDetail = () => {
                  <div className="space-y-2 mt-4 text-sm">
                     <div className="flex items-center gap-2">
                         <CreditCard className="h-4 w-4 text-accent"/>
-                        <span><span className="font-semibold">6 cuotas sin interés</span> de <span className="font-bold">{formatPrice(product.installmentPrice)}</span> con tarjeta</span>
+                        <span><span className="font-semibold">Hasta 12 cuotas sin interés</span> de <span className="font-bold">{formatPrice(product.installmentPrice)}</span> con tarjeta</span>
                     </div>
                     <div className="flex items-center gap-2">
                         <Landmark className="h-4 w-4 text-success"/>

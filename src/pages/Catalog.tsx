@@ -93,7 +93,7 @@ const ProductCard = ({ product }: { product: Product }) => {
             )}
           </div>
           <div className="text-accent font-semibold">
-            6 cuotas de {formatPrice(product.installmentPrice)}
+            12 cuotas de {formatPrice(product.installmentPrice)}
           </div>
           <p className="text-xs text-muted-foreground">Sin interés</p>
         </div>

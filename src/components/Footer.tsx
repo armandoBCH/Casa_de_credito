@@ -11,8 +11,8 @@ const Footer = () => {
           {/* Company Info */}
           <div className="space-y-6">
             <Link to="/" className="flex items-center space-x-3">
-              <img src="https://res.cloudinary.com/dbq5jp6jn/image/upload/v1753127509/Captura_de_pantalla_2025-07-21_164537_qjn0wq.png" alt="Casa de Crédito" className="h-10 w-10" />
-              <span className="font-bold text-xl">Casa de Crédito</span>
+              <img src="https://res.cloudinary.com/dbq5jp6jn/image/upload/v1753127509/Captura_de_pantalla_2025-07-21_164537_qjn0wq.png" alt="Casa del Credito" className="h-10 w-10" />
+              <span className="font-bold text-xl">Casa del Credito</span>
             </Link>
             <p className="text-primary-foreground/80 leading-relaxed">
               Tu socio de confianza para equipar tu hogar. Ofrecemos los mejores productos
@@ -109,15 +109,14 @@ const Footer = () => {
                   </p>
                 </div>
               </div>
-            </div>
-
-            {/* Business Hours */}
-            <div className="pt-4 border-t border-primary-light/20">
-              <p className="font-medium mb-2">Horarios de Atención</p>
-              <div className="text-sm text-primary-foreground/80 space-y-1">
-                <p>Lun - Vie: 9:00 - 19:00</p>
-                <p>Sábados: 9:00 - 17:00</p>
-                <p>Domingos: Cerrado</p>
+              
+               <div>
+                <p className="font-medium">Horarios de Atención</p>
+                <div className="text-sm text-primary-foreground/80 space-y-1 mt-1">
+                  <p>Lun - Vie: 9:00 - 19:00</p>
+                  <p>Sábados: 9:00 - 17:00</p>
+                  <p>Domingos: Cerrado</p>
+                </div>
               </div>
             </div>
           </div>
@@ -127,7 +126,7 @@ const Footer = () => {
         <div className="py-6 border-t border-primary-light/20">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <div className="text-sm text-primary-foreground/80">
-              © 2024 Casa de Crédito. Todos los derechos reservados.
+              © 2024 Casa del Credito. Todos los derechos reservados.
             </div>
             <div className="flex space-x-6 text-sm">
               <Link to="/privacy" className="text-primary-foreground/80 hover:text-accent transition-colors">

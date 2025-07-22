@@ -90,7 +90,7 @@ const ProductCard = ({ product }: { product: Product }) => {
             )}
           </div>
           <div className="text-accent font-semibold">
-            6 cuotas sin interés de {formatPrice(product.installmentPrice)}
+            Hasta 12 cuotas sin interés de {formatPrice(product.installmentPrice)}
           </div>
           <p className="text-xs text-muted-foreground">con tarjeta de crédito/débito</p>
         </div>

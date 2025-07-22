@@ -101,9 +101,18 @@ const Contact = () => {
               </CardContent>
             </Card>
             
-            {/* Map Placeholder */}
-            <div className="aspect-video bg-muted rounded-lg flex items-center justify-center">
-              <p className="text-muted-foreground">Mapa próximamente</p>
+            {/* Map */}
+            <div className="aspect-video bg-muted rounded-lg flex items-center justify-center overflow-hidden shadow-card">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3184.580123545025!2d-60.33449692415176!3d-36.80413097227448!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9594279b1a5e1e3b%3A0x8c7db7658793b58c!2sEspa%C3%B1a%203024%2C%20B7400%20Olavarr%C3%ADa%2C%20Provincia%20de%20Buenos%20Aires%2C%20Argentina!5e0!3m2!1sen!2sus!4v1716313000000!5m2!1sen!2sus"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen={true}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Ubicación de Casa del Credito"
+              ></iframe>
             </div>
           </div>
 

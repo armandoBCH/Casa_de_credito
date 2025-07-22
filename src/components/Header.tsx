@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "./ui/button.tsx";
 import { Badge } from "./ui/badge.tsx";
-import { Menu, X, ShoppingCart, Phone } from "lucide-react";
+import { Menu, X, ShoppingCart, Phone, Instagram } from "lucide-react";
 import { useCart } from "../context/CartContext.tsx";
 
 const Header = () => {
@@ -26,8 +26,8 @@ const Header = () => {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-3">
-            <img src="https://res.cloudinary.com/dbq5jp6jn/image/upload/v1753127509/Captura_de_pantalla_2025-07-21_164537_qjn0wq.png" alt="Casa de Crédito" className="h-10 w-10" />
-            <span className="font-bold text-xl text-primary">Casa de Crédito</span>
+            <img src="https://res.cloudinary.com/dbq5jp6jn/image/upload/v1753127509/Captura_de_pantalla_2025-07-21_164537_qjn0wq.png" alt="Casa del Credito" className="h-10 w-10" />
+            <span className="font-bold text-xl text-primary">Casa del Credito</span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -48,7 +48,12 @@ const Header = () => {
           </nav>
 
           {/* Action Buttons */}
-          <div className="hidden md:flex items-center space-x-4">
+          <div className="hidden md:flex items-center space-x-2">
+             <Button variant="ghost" size="icon" asChild>
+                <a href="https://www.instagram.com/casadelcredito/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                  <Instagram className="h-5 w-5" />
+                </a>
+              </Button>
              <Button variant="ghost" asChild>
               <a href="https://wa.me/5492284598212" target="_blank" rel="noopener noreferrer">
                 <Phone className="h-4 w-4" />
@@ -102,6 +107,12 @@ const Header = () => {
                   <a href="https://wa.me/5492284598212" target="_blank" rel="noopener noreferrer" onClick={() => setIsMenuOpen(false)}>
                     <Phone className="h-4 w-4" />
                     WhatsApp
+                  </a>
+                </Button>
+                <Button variant="outline" size="sm" className="w-full" asChild>
+                   <a href="https://www.instagram.com/casadelcredito/" target="_blank" rel="noopener noreferrer" onClick={() => setIsMenuOpen(false)}>
+                    <Instagram className="h-4 w-4" />
+                    Instagram
                   </a>
                 </Button>
                 <Button variant="accent" size="sm" className="w-full" asChild>

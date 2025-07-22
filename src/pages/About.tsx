@@ -125,7 +125,7 @@ const About = () => {
                 </h2>
                 <div className="space-y-6 text-lg text-muted-foreground leading-relaxed">
                   <p>
-                    Casa de Crédito nació en 2014 con una misión clara: hacer que el equipamiento 
+                    Casa del Credito nació en 2014 con una misión clara: hacer que el equipamiento 
                     del hogar sea accesible para todas las familias. Comenzamos como 
                     una pequeña empresa familiar que entendía la importancia de la confianza
                     y el buen servicio.

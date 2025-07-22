@@ -19,8 +19,8 @@ const promotions = [
   },
   {
     id: 2,
-    title: "Sin Interés en 6 Cuotas",
-    description: "Llevate cualquier producto del catálogo y pagalo en 6 cuotas sin interés con tarjeta.",
+    title: "Hasta 12 Cuotas Sin Interés",
+    description: "Llevate cualquier producto del catálogo y pagalo hasta en 12 cuotas sin interés con tarjeta.",
     discount: 0,
     validUntil: "2024-12-31",
     isHot: false,

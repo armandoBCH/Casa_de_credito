@@ -24,7 +24,7 @@ const Hero = () => {
           <div className="flex items-center space-x-2 mb-6">
             <div className="flex items-center space-x-1 bg-accent/20 backdrop-blur-sm rounded-full px-4 py-2 text-sm font-medium text-accent-light">
               <Star className="h-4 w-4 fill-current" />
-              <span>Casa de Crédito Confiable</span>
+              <span>Casa del Credito Confiable</span>
             </div>
           </div>
 
@@ -64,7 +64,7 @@ const Hero = () => {
             </div>
             <div className="flex items-center space-x-2">
               <div className="w-2 h-2 bg-accent rounded-full"></div>
-              <span>Hasta 6 cuotas sin interés</span>
+              <span>Hasta 12 cuotas sin interés</span>
             </div>
             <div className="flex items-center space-x-2">
               <div className="w-2 h-2 bg-accent rounded-full"></div>
