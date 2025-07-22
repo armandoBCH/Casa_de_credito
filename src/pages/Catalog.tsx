@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Header from "../components/Header.tsx";
 import Footer from "../components/Footer.tsx";
 import { Button } from "../components/ui/button.tsx";
@@ -11,7 +11,6 @@ import { Link } from "react-router-dom";
 import { products as allProducts, Product } from "../data/products.ts";
 import { useCart } from "../context/CartContext.tsx";
 import { toast } from "sonner";
-import ProductCardSkeleton from "../components/ProductCardSkeleton.tsx";
 
 const categories = ["Todos", "Muebles", "Electrónicos", "Electrodomésticos"];
 const sortOptions = [
@@ -112,14 +111,7 @@ const Catalog = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("Todos");
   const [sortBy, setSortBy] = useState("name");
-  const [isLoading, setIsLoading] = useState(true);
   
-  useEffect(() => {
-    // Data is local, so we load it instantly to avoid flickering.
-    setIsLoading(false);
-  }, []);
-
-
   // Filter and sort products
   const filteredProducts = allProducts
     .filter((product) => {
@@ -203,18 +195,12 @@ const Catalog = () => {
         {/* Results Count */}
         <div className="mb-6">
           <p className="text-muted-foreground">
-            {!isLoading && `Mostrando ${filteredProducts.length} producto${filteredProducts.length !== 1 ? 's' : ''}`}
+            {`Mostrando ${filteredProducts.length} producto${filteredProducts.length !== 1 ? 's' : ''}`}
           </p>
         </div>
 
         {/* Products Grid */}
-        {isLoading ? (
-           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            {Array.from({ length: 8 }).map((_, index) => (
-              <ProductCardSkeleton key={index} />
-            ))}
-          </div>
-        ) : filteredProducts.length > 0 ? (
+        {filteredProducts.length > 0 ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             {filteredProducts.map((product, index) => (
               <div

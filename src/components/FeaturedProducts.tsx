@@ -1,4 +1,3 @@
-import { useState, useEffect } from "react";
 import { Button } from "./ui/button.tsx";
 import { Card, CardContent } from "./ui/card.tsx";
 import { Badge } from "./ui/badge.tsx";
@@ -7,7 +6,6 @@ import { Link } from "react-router-dom";
 import { products, Product } from "../data/products.ts";
 import { useCart } from "../context/CartContext.tsx";
 import { toast } from "sonner";
-import ProductCardSkeleton from "./ProductCardSkeleton.tsx";
 
 const featuredProducts = products.filter(p => p.isPromoted).slice(0, 3);
 
@@ -110,13 +108,6 @@ const ProductCard = ({ product }: { product: Product }) => {
 };
 
 const FeaturedProducts = () => {
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    // Data is local, so we load it instantly to avoid flickering.
-    setIsLoading(false);
-  }, []);
-
   return (
     <section className="py-16 bg-muted/50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -132,21 +123,15 @@ const FeaturedProducts = () => {
 
         {/* Products Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-          {isLoading ? (
-            Array.from({ length: 3 }).map((_, index) => (
-              <ProductCardSkeleton key={index} />
-            ))
-          ) : (
-            featuredProducts.map((product, index) => (
-              <div
-                key={product.id}
-                className="animate-slide-up"
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
-                <ProductCard product={product} />
-              </div>
-            ))
-          )}
+          {featuredProducts.map((product, index) => (
+            <div
+              key={product.id}
+              className="animate-slide-up"
+              style={{ animationDelay: `${index * 0.1}s` }}
+            >
+              <ProductCard product={product} />
+            </div>
+          ))}
         </div>
 
         {/* CTA */}
