@@ -6,9 +6,11 @@ import { Card, CardContent } from "../components/ui/card.tsx";
 import { Badge } from "../components/ui/badge.tsx";
 import { Input } from "../components/ui/input.tsx";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../components/ui/select.tsx";
-import { Search, Filter, ShoppingCart, Eye, Calculator } from "lucide-react";
+import { Search, Filter, ShoppingCart, Eye } from "lucide-react";
 import { Link } from "react-router-dom";
 import { products as allProducts, Product } from "../data/products.ts";
+import { useCart } from "../context/CartContext.tsx";
+import { toast } from "sonner";
 
 const categories = ["Todos", "Muebles", "Electrónicos", "Electrodomésticos"];
 const sortOptions = [
@@ -27,6 +29,14 @@ const formatPrice = (price: number) => {
 };
 
 const ProductCard = ({ product }: { product: Product }) => {
+    const { addToCart } = useCart();
+    const handleAddToCart = (e: React.MouseEvent) => {
+        e.preventDefault();
+        e.stopPropagation();
+        addToCart(product, 1);
+        toast.success(`${product.name} agregado al carrito!`);
+    };
+
   return (
     <Card className="group bg-card border-border hover:shadow-card transition-all duration-300 hover:scale-105">
       <div className="relative overflow-hidden">
@@ -57,10 +67,8 @@ const ProductCard = ({ product }: { product: Product }) => {
               <Eye className="h-4 w-4" />
             </Link>
           </Button>
-          <Button size="icon" variant="secondary" className="h-8 w-8 bg-white/90 hover:bg-white" asChild>
-            <Link to="/simulator">
-              <Calculator className="h-4 w-4" />
-            </Link>
+          <Button size="icon" variant="secondary" className="h-8 w-8 bg-white/90 hover:bg-white" onClick={handleAddToCart}>
+            <ShoppingCart className="h-4 w-4" />
           </Button>
         </div>
       </div>
@@ -85,16 +93,14 @@ const ProductCard = ({ product }: { product: Product }) => {
             )}
           </div>
           <div className="text-accent font-semibold">
-            {product.installments} cuotas de {formatPrice(product.installmentPrice)}
+            6 cuotas de {formatPrice(product.installmentPrice)}
           </div>
           <p className="text-xs text-muted-foreground">Sin interés</p>
         </div>
 
-        <Button variant="default" size="sm" className="w-full mt-auto" asChild>
-          <Link to={`/product/${product.id}`}>
-            <ShoppingCart className="h-4 w-4" />
-            Ver Producto
-          </Link>
+        <Button variant="default" size="sm" className="w-full mt-auto" onClick={handleAddToCart}>
+            <ShoppingCart className="h-4 w-4 mr-2" />
+            Agregar al Carrito
         </Button>
       </CardContent>
     </Card>

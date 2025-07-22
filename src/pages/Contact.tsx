@@ -16,9 +16,13 @@ const contactFormSchema = z.object({
   name: z.string().min(2, "El nombre debe tener al menos 2 caracteres."),
   email: z.string().email("Por favor, ingresá un email válido."),
   phone: z.string().optional(),
-  subject: z.string({ required_error: "Por favor, seleccioná un asunto." }),
+  subject: z.string().optional(),
   message: z.string().min(10, "El mensaje debe tener al menos 10 caracteres."),
+}).refine(data => !!data.subject, {
+  message: "Por favor, seleccioná un asunto.",
+  path: ["subject"],
 });
+
 
 type ContactFormValues = z.infer<typeof contactFormSchema>;
 
@@ -68,21 +72,22 @@ const Contact = () => {
                   <MapPin className="h-5 w-5 text-primary mt-1" />
                   <div>
                     <h3 className="font-semibold">Dirección</h3>
-                    <p className="text-muted-foreground">Av. Principal 1234, Ciudad, Provincia</p>
+                    <p className="text-muted-foreground">España 3024, B7400 Olavarría, Provincia de Buenos Aires</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
                   <Phone className="h-5 w-5 text-primary mt-1" />
                   <div>
-                    <h3 className="font-semibold">Teléfono</h3>
-                    <a href="tel:+541112345678" className="text-muted-foreground hover:text-primary transition-colors">+54 11 1234-5678</a>
+                    <h3 className="font-semibold">Teléfono y WhatsApp</h3>
+                    <a href="tel:+5492284387540" className="block text-muted-foreground hover:text-primary transition-colors">+54 9 2284 387540</a>
+                    <a href="https://wa.me/5492284598212" className="block text-muted-foreground hover:text-primary transition-colors" target="_blank" rel="noopener noreferrer">+54 9 2284 598212 (WhatsApp)</a>
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
                   <Mail className="h-5 w-5 text-primary mt-1" />
                   <div>
                     <h3 className="font-semibold">Email</h3>
-                    <a href="mailto:info@casadecredito.com" className="text-muted-foreground hover:text-primary transition-colors">info@casadecredito.com</a>
+                    <a href="mailto:compras@casadelcredito.com.ar" className="text-muted-foreground hover:text-primary transition-colors">compras@casadelcredito.com.ar</a>
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
@@ -144,7 +149,7 @@ const Contact = () => {
                         <FormItem>
                           <FormLabel>Teléfono (Opcional)</FormLabel>
                           <FormControl>
-                            <Input placeholder="Ej: 11 1234-5678" {...field} />
+                            <Input placeholder="Ej: 2284 123456" {...field} />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -156,7 +161,7 @@ const Contact = () => {
                       render={({ field }) => (
                         <FormItem>
                           <FormLabel>Asunto</FormLabel>
-                          <Select onValueChange={field.onChange} defaultValue={field.value}>
+                          <Select onValueChange={field.onChange} value={field.value || ''}>
                             <FormControl>
                               <SelectTrigger>
                                 <SelectValue placeholder="Seleccioná un motivo de contacto" />
@@ -164,7 +169,7 @@ const Contact = () => {
                             </FormControl>
                             <SelectContent>
                               <SelectItem value="Consulta sobre producto">Consulta sobre producto</SelectItem>
-                              <SelectItem value="Estado de mi crédito">Estado de mi crédito</SelectItem>
+                              <SelectItem value="Estado de mi compra">Estado de mi compra</SelectItem>
                               <SelectItem value="Servicio técnico">Servicio técnico</SelectItem>
                               <SelectItem value="Otra consulta">Otra consulta</SelectItem>
                             </SelectContent>

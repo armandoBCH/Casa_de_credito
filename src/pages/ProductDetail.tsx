@@ -11,7 +11,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "../components/ui/tabs.
 import { Table, TableBody, TableCell, TableRow } from "../components/ui/table.tsx";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "../components/ui/carousel.tsx";
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from "../components/ui/breadcrumb.tsx";
-import { Star, CheckCircle, Truck, Shield, MessageSquare, Plus, Minus, ShoppingCart } from "lucide-react";
+import { Star, CheckCircle, Truck, Shield, MessageSquare, Plus, Minus, ShoppingCart, Banknote, Landmark, CreditCard } from "lucide-react";
 import { useCart } from "../context/CartContext.tsx";
 import { toast } from "sonner";
 
@@ -63,7 +63,6 @@ const ProductDetail = () => {
             action: {
                 label: "Ver Carrito",
                 onClick: () => {
-                    // This requires a navigation instance. For simplicity, we'll use window location.
                     window.location.href = '/cart';
                 }
             }
@@ -138,12 +137,23 @@ const ProductDetail = () => {
 
             <Card className="bg-muted/50 mb-6">
               <CardContent className="p-6">
-                <div className="flex items-center gap-3 mb-4">
+                <div className="flex items-center gap-3 mb-2">
                   <span className="text-4xl font-bold text-primary">{formatPrice(product.price)}</span>
                   {product.originalPrice && <span className="text-xl text-muted-foreground line-through">{formatPrice(product.originalPrice)}</span>}
                 </div>
-                <div className="text-accent font-semibold text-lg">
-                  o {product.installments} cuotas sin interés de {formatPrice(product.installmentPrice)}
+                 <div className="space-y-2 mt-4 text-sm">
+                    <div className="flex items-center gap-2">
+                        <CreditCard className="h-4 w-4 text-accent"/>
+                        <span><span className="font-semibold">6 cuotas sin interés</span> de <span className="font-bold">{formatPrice(product.installmentPrice)}</span> con tarjeta</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                        <Landmark className="h-4 w-4 text-success"/>
+                        <span><span className="font-semibold">6% de descuento</span> por transferencia: <span className="font-bold">{formatPrice(product.price * 0.94)}</span></span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                        <Banknote className="h-4 w-4 text-success"/>
+                        <span><span className="font-semibold">14.5% de descuento</span> en efectivo: <span className="font-bold">{formatPrice(product.price * 0.855)}</span></span>
+                    </div>
                 </div>
               </CardContent>
             </Card>
@@ -160,14 +170,14 @@ const ProductDetail = () => {
             </div>
             
             <Button variant="secondary" size="lg" className="w-full" asChild>
-                <a href={`https://wa.me/1234567890?text=Hola! Me interesa el producto: ${product.name}`}>
+                <a href={`https://wa.me/5492284598212?text=Hola! Me interesa el producto: ${product.name}`} target="_blank" rel="noopener noreferrer">
                     <MessageSquare className="h-5 w-5"/> Consultar por WhatsApp
                 </a>
             </Button>
             
             <div className="mt-8 space-y-3 text-sm">
                 <div className="flex items-center gap-3"><CheckCircle className="h-5 w-5 text-success"/><span>Stock disponible</span></div>
-                <div className="flex items-center gap-3"><Truck className="h-5 w-5 text-primary"/><span>Entrega Gratuita en CABA y GBA</span></div>
+                <div className="flex items-center gap-3"><Truck className="h-5 w-5 text-primary"/><span>Entrega Gratuita en Olavarría y zona</span></div>
                 <div className="flex items-center gap-3"><Shield className="h-5 w-5 text-accent"/><span>{product.specs['Garantía'] || '12 meses'} de garantía</span></div>
             </div>
           </div>

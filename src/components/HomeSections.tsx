@@ -3,7 +3,7 @@ import { Badge } from "./ui/badge.tsx";
 import { Button } from "./ui/button.tsx";
 import { 
   Shield, 
-  Clock, 
+  Wallet, 
   Truck, 
   CreditCard, 
   Star, 
@@ -15,27 +15,27 @@ import { Link } from "react-router-dom";
 
 const benefits = [
   {
-    icon: Clock,
-    title: "Aprobación en 24hs",
-    description: "Proceso rápido y sin complicaciones. Tu respuesta en menos de un día.",
+    icon: Wallet,
+    title: "Pagá como quieras",
+    description: "Aceptamos tarjetas, transferencias con descuento y efectivo.",
     color: "text-accent"
   },
   {
     icon: CreditCard,
-    title: "Sin Interés hasta 12 cuotas",
-    description: "Llevate lo que necesitás y pagalo cómodamente sin interés.",
+    title: "Hasta 6 cuotas sin interés",
+    description: "Llevate lo que necesitás y pagalo cómodamente sin interés con tu tarjeta.",
     color: "text-success"
   },
   {
     icon: Truck,
     title: "Entrega Gratuita",
-    description: "Llevamos tu compra hasta tu hogar sin costo adicional en CABA y GBA.",
+    description: "Llevamos tu compra hasta tu hogar sin costo adicional en Olavarría y zona.",
     color: "text-primary"
   },
   {
     icon: Shield,
-    title: "Garantía Extendida",
-    description: "Protección adicional para tu tranquilidad y la de tu familia.",
+    title: "Garantía de Confianza",
+    description: "Todos nuestros productos cuentan con garantía oficial para tu tranquilidad.",
     color: "text-warning"
   }
 ];
@@ -43,21 +43,21 @@ const benefits = [
 const testimonials = [
   {
     name: "María García",
-    text: "Excelente atención y muy buenos precios. Pude equipar mi cocina completa en 12 cuotas sin interés.",
+    text: "Excelente atención y muy buenos precios. Pude equipar mi cocina completa en 6 cuotas sin interés.",
     rating: 5,
-    location: "Villa Urquiza, CABA"
+    location: "Olavarría"
   },
   {
     name: "Carlos Rodríguez",
-    text: "Rápidos y confiables. Me aprobaron el crédito en el mismo día y la entrega fue puntual.",
+    text: "Rápidos y confiables. Compré online y la entrega fue puntual y coordinada. ¡Muy recomendables!",
     rating: 5,
-    location: "San Isidro, GBA"
+    location: "Sierras Bayas"
   },
   {
     name: "Ana Martínez",
     text: "Los recomiendo 100%. Precios justos y financiación accesible para toda la familia.",
     rating: 5,
-    location: "Palermo, CABA"
+    location: "Olavarría"
   }
 ];
 
@@ -246,8 +246,7 @@ const CTA = () => {
           Empezá a Equipar tu Hogar Hoy Mismo
         </h2>
         <p className="text-xl mb-8 opacity-90 animate-slide-up">
-          No esperes más. Conseguí aprobación en 24hs y llevate lo que necesitás 
-          con las mejores condiciones del mercado.
+          No esperes más. Conseguí lo que necesitás con las mejores condiciones del mercado.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center animate-scale-in">
           <Button variant="secondary" size="lg" asChild>
@@ -256,7 +255,7 @@ const CTA = () => {
             </Link>
           </Button>
           <Button variant="outline" size="lg" className="bg-white/10 border-white/20 text-white hover:bg-white/20" asChild>
-            <a href="https://wa.me/1234567890?text=Hola! Quiero consultar sobre financiamiento">
+            <a href="https://wa.me/5492284598212?text=Hola! Quiero hacer una consulta">
               Contactar Ahora
             </a>
           </Button>
@@ -274,7 +273,7 @@ const CTA = () => {
           </div>
           <div className="flex items-center gap-2">
             <CheckCircle className="h-4 w-4" />
-            <span>98% aprobación</span>
+            <span>Compra 100% segura</span>
           </div>
         </div>
       </div>

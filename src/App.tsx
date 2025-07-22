@@ -6,7 +6,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { CartProvider } from "./context/CartContext.tsx";
 import Index from "./pages/Index.tsx";
 import Catalog from "./pages/Catalog.tsx";
-import Simulator from "./pages/Simulator.tsx";
 import Promotions from "./pages/Promotions.tsx";
 import About from "./pages/About.tsx";
 import Contact from "./pages/Contact.tsx";
@@ -28,7 +27,6 @@ const App = () => (
             <Route path="/" element={<Index />} />
             <Route path="/catalog" element={<Catalog />} />
             <Route path="/product/:id" element={<ProductDetail />} />
-            <Route path="/simulator" element={<Simulator />} />
             <Route path="/promotions" element={<Promotions />} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />

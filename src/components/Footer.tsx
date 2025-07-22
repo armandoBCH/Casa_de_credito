@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Phone, Mail, MapPin, Facebook, Instagram, Twitter } from "lucide-react";
+import { Phone, Mail, MapPin, Instagram } from "lucide-react";
 import { Button } from "./ui/button.tsx";
 
 const Footer = () => {
@@ -19,14 +19,10 @@ const Footer = () => {
               con financiamiento accesible y sin complicaciones.
             </p>
             <div className="flex space-x-4">
-              <Button variant="ghost" size="icon" className="text-primary-foreground hover:text-accent hover:bg-primary-light">
-                <Facebook className="h-5 w-5" />
-              </Button>
-              <Button variant="ghost" size="icon" className="text-primary-foreground hover:text-accent hover:bg-primary-light">
-                <Instagram className="h-5 w-5" />
-              </Button>
-              <Button variant="ghost" size="icon" className="text-primary-foreground hover:text-accent hover:bg-primary-light">
-                <Twitter className="h-5 w-5" />
+               <Button variant="ghost" size="icon" className="text-primary-foreground hover:text-accent hover:bg-primary-light" asChild>
+                <a href="https://www.instagram.com/casadelcredito/" target="_blank" rel="noopener noreferrer">
+                  <Instagram className="h-5 w-5" />
+                </a>
               </Button>
             </div>
           </div>
@@ -39,7 +35,6 @@ const Footer = () => {
                 { name: "Inicio", href: "/" },
                 { name: "Catálogo", href: "/catalog" },
                 { name: "Promociones", href: "/promotions" },
-                { name: "Simulador de Cuotas", href: "/simulator" },
                 { name: "Sobre Nosotros", href: "/about" },
                 { name: "Contacto", href: "/contact" },
               ].map((link) => (
@@ -59,12 +54,12 @@ const Footer = () => {
             <h3 className="font-semibold text-lg">Categorías</h3>
             <nav className="space-y-3">
               {[
-                "Muebles de Living",
-                "Muebles de Dormitorio",
-                "Electrodomésticos",
+                "Muebles",
                 "Electrónicos",
-                "Decoración",
-                "Cocina y Comedor",
+                "Electrodomésticos",
+                "Living",
+                "Dormitorio",
+                "Cocina",
               ].map((category) => (
                 <Link
                   key={category}
@@ -84,9 +79,12 @@ const Footer = () => {
               <div className="flex items-start space-x-3">
                 <Phone className="h-5 w-5 text-accent mt-0.5 flex-shrink-0" />
                 <div>
-                  <p className="font-medium">Teléfono</p>
-                  <a href="tel:+1234567890" className="text-primary-foreground/80 hover:text-accent transition-colors">
-                    +54 11 1234-5678
+                  <p className="font-medium">Teléfono / WhatsApp</p>
+                   <a href="https://wa.me/5492284598212" className="block text-primary-foreground/80 hover:text-accent transition-colors">
+                    +54 9 2284 598212
+                  </a>
+                  <a href="tel:+5492284387540" className="text-primary-foreground/80 hover:text-accent transition-colors">
+                    +54 9 2284 387540
                   </a>
                 </div>
               </div>
@@ -95,8 +93,8 @@ const Footer = () => {
                 <Mail className="h-5 w-5 text-accent mt-0.5 flex-shrink-0" />
                 <div>
                   <p className="font-medium">Email</p>
-                  <a href="mailto:info@casadecredito.com" className="text-primary-foreground/80 hover:text-accent transition-colors">
-                    info@casadecredito.com
+                  <a href="mailto:compras@casadelcredito.com.ar" className="text-primary-foreground/80 hover:text-accent transition-colors">
+                    compras@casadelcredito.com.ar
                   </a>
                 </div>
               </div>
@@ -106,8 +104,8 @@ const Footer = () => {
                 <div>
                   <p className="font-medium">Dirección</p>
                   <p className="text-primary-foreground/80">
-                    Av. Principal 1234<br />
-                    Ciudad, Provincia
+                    España 3024, B7400<br />
+                    Olavarría, Provincia de Buenos Aires
                   </p>
                 </div>
               </div>

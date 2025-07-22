@@ -19,13 +19,13 @@ const promotions = [
   },
   {
     id: 2,
-    title: "Sin Interés en 12 Cuotas",
-    description: "Llevate cualquier producto del catálogo y pagalo en 12 cuotas sin interés.",
+    title: "Sin Interés en 6 Cuotas",
+    description: "Llevate cualquier producto del catálogo y pagalo en 6 cuotas sin interés con tarjeta.",
     discount: 0,
     validUntil: "2024-12-31",
     isHot: false,
     image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80",
-    terms: "Aplicable a productos seleccionados. Evaluación crediticia."
+    terms: "Aplicable a pagos con tarjeta de crédito/débito."
   },
   {
     id: 3,
@@ -49,23 +49,23 @@ const promotions = [
   },
   {
     id: 5,
-    title: "Cyber Monday Tecnología",
-    description: "Smart TVs, notebooks y tablets con descuentos increíbles.",
-    discount: 40,
-    validUntil: "2024-11-27",
+    title: "Descuento por Transferencia",
+    description: "Pagá por transferencia bancaria y obtené un 6% de descuento en el total de tu compra.",
+    discount: 6,
+    validUntil: "2024-12-31",
     isHot: true,
-    image: "https://images.unsplash.com/photo-1461151304267-38535e780c79?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2533&q=80",
-    terms: "Solo por 3 días. Stock limitado."
+    image: "https://images.unsplash.com/photo-1560520655-54316a4a1545?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=60",
+    terms: "El descuento se aplica al finalizar la compra."
   },
   {
     id: 6,
     title: "Referí un Amigo",
-    description: "Por cada amigo que compre, ambos obtienen $10.000 de descuento.",
+    description: "Por cada amigo que compre, ambos obtienen un cupón de descuento para su próxima compra.",
     discount: 0,
     validUntil: "2024-12-31",
     isHot: false,
     image: "https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80",
-    terms: "Válido para compras superiores a $50.000. Un descuento por persona."
+    terms: "Válido para compras superiores a $50.000. Un cupón por persona."
   }
 ];
 
@@ -149,7 +149,7 @@ const PromotionCard = ({ promotion }: { promotion: typeof promotions[0] }) => {
             </Link>
           </Button>
           <Button variant="outline" size="sm" asChild>
-            <a href="https://wa.me/1234567890?text=Hola! Me interesa la promoción: {promotion.title}">
+            <a href={`https://wa.me/5492284598212?text=Hola! Me interesa la promoción: ${promotion.title}`} target="_blank" rel="noopener noreferrer">
               Consultar
             </a>
           </Button>
@@ -243,7 +243,7 @@ const Promotions = () => {
               </Link>
             </Button>
             <Button variant="outline" size="lg" className="bg-white/10 border-white/20 text-white hover:bg-white/20" asChild>
-              <a href="https://wa.me/1234567890?text=Hola! Quiero consultar sobre las promociones">
+              <a href="https://wa.me/5492284598212?text=Hola! Quiero consultar sobre las promociones" target="_blank" rel="noopener noreferrer">
                 Contactar por WhatsApp
               </a>
             </Button>

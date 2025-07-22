@@ -1,5 +1,5 @@
 import { Button } from "./ui/button.tsx";
-import { ArrowRight, Calculator, Star } from "lucide-react";
+import { ArrowRight, Star, CreditCard } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const heroImage = "/assets/hero-furniture.jpg";
@@ -48,10 +48,10 @@ const Hero = () => {
                 <ArrowRight className="h-5 w-5" />
               </Link>
             </Button>
-            <Button variant="outline" size="lg" className="bg-white/10 border-white/20 text-white hover:bg-white/20" asChild>
-              <Link to="/simulator">
-                <Calculator className="h-5 w-5" />
-                Simular Cuotas
+             <Button variant="outline" size="lg" className="bg-white/10 border-white/20 text-white hover:bg-white/20" asChild>
+              <Link to="/contact">
+                <CreditCard className="h-5 w-5" />
+                Medios de Pago
               </Link>
             </Button>
           </div>
@@ -60,11 +60,11 @@ const Hero = () => {
           <div className="mt-12 flex flex-wrap items-center gap-8 text-white/80 text-sm animate-fade-in">
             <div className="flex items-center space-x-2">
               <div className="w-2 h-2 bg-accent rounded-full"></div>
-              <span>Aprobación en 24hs</span>
+              <span>Pagá como quieras</span>
             </div>
             <div className="flex items-center space-x-2">
               <div className="w-2 h-2 bg-accent rounded-full"></div>
-              <span>Sin gastos administrativos</span>
+              <span>Hasta 6 cuotas sin interés</span>
             </div>
             <div className="flex items-center space-x-2">
               <div className="w-2 h-2 bg-accent rounded-full"></div>

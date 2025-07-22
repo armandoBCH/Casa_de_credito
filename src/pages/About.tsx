@@ -44,7 +44,7 @@ const stats = [
   { icon: Users, number: "5,000+", label: "Familias Satisfechas" },
   { icon: Clock, number: "10", label: "Años de Experiencia" },
   { icon: Award, number: "50+", label: "Marcas de Calidad" },
-  { icon: Shield, number: "98%", label: "Aprobación de Créditos" }
+  { icon: Shield, number: "100%", label: "Compra Segura" }
 ];
 
 const timeline = [
@@ -61,12 +61,12 @@ const timeline = [
   {
     year: "2020",
     title: "Digitalización",
-    description: "Implementamos tecnología para mejorar la experiencia del cliente y agilizar los procesos de crédito."
+    description: "Lanzamos nuestra tienda online para mejorar la experiencia del cliente y facilitar la compra directa."
   },
   {
     year: "2024",
     title: "Líderes del Sector",
-    description: "Nos consolidamos como referentes en financiamiento de muebles y electrodomésticos en la región."
+    description: "Nos consolidamos como referentes en la venta de muebles y electrodomésticos en la región."
   }
 ];
 
@@ -85,11 +85,11 @@ const About = () => {
             </Badge>
             <h1 className="text-4xl md:text-6xl font-bold mb-6 animate-fade-in">
               Tu Socio de Confianza
-              <span className="block text-accent-light">en Financiamiento</span>
+              <span className="block text-accent-light">para Equipar tu Hogar</span>
             </h1>
             <p className="text-xl md:text-2xl max-w-3xl mx-auto leading-relaxed animate-slide-up">
-              Más de 10 años ayudando a familias argentinas a conseguir 
-              los muebles y electrodomésticos que necesitan, con créditos accesibles y sin complicaciones.
+              Más de 10 años ayudando a familias a conseguir 
+              los muebles y electrodomésticos que necesitan, con la mejor atención y múltiples formas de pago.
             </p>
           </div>
         </section>
@@ -126,17 +126,17 @@ const About = () => {
                 <div className="space-y-6 text-lg text-muted-foreground leading-relaxed">
                   <p>
                     Casa de Crédito nació en 2014 con una misión clara: hacer que el equipamiento 
-                    del hogar sea accesible para todas las familias argentinas. Comenzamos como 
-                    una pequeña empresa familiar que entendía las dificultades de acceder a 
-                    financiamiento justo y transparente.
+                    del hogar sea accesible para todas las familias. Comenzamos como 
+                    una pequeña empresa familiar que entendía la importancia de la confianza
+                    y el buen servicio.
                   </p>
                   <p>
                     A lo largo de estos años, hemos crecido junto a nuestros clientes, 
                     adaptándonos a sus necesidades y manteniendo siempre nuestros valores 
-                    de confianza, transparencia y calidad en el servicio.
+                    de cercanía, transparencia y calidad.
                   </p>
                   <p>
-                    Hoy somos líderes en el sector, pero seguimos siendo esa empresa familiar 
+                    Hoy somos líderes en el sector, pero seguimos siendo esa empresa 
                     que se preocupa genuinamente por ayudar a cada cliente a hacer realidad 
                     el hogar de sus sueños.
                   </p>
@@ -263,7 +263,7 @@ const About = () => {
                 Dónde Estamos
               </h2>
               <p className="text-lg text-muted-foreground">
-                Ubicados estratégicamente para servirte mejor
+                Ubicados en Olavarría para servirte mejor
               </p>
             </div>
 
@@ -276,12 +276,12 @@ const About = () => {
                       Nuestra Sede Principal
                     </h3>
                     <p className="text-muted-foreground mb-4">
-                      Av. Principal 1234, Ciudad Autónoma de Buenos Aires
+                      España 3024, B7400 Olavarría, Provincia de Buenos Aires
                     </p>
                     <p className="text-sm text-muted-foreground leading-relaxed">
-                      Contamos con showroom de 500m² donde podés ver y tocar todos nuestros productos. 
-                      También tenemos un equipo de asesores especializados en financiamiento que te van a 
-                      ayudar a encontrar la mejor opción para tu presupuesto.
+                      Contamos con un showroom donde podés ver y tocar todos nuestros productos. 
+                      También tenemos un equipo de asesores especializados que te van a 
+                      ayudar a encontrar la mejor opción para vos.
                     </p>
                   </div>
                 </div>
@@ -309,16 +309,16 @@ const About = () => {
                 <div className="bg-muted rounded-2xl p-8 text-center">
                   <MapPin className="h-16 w-16 text-primary mx-auto mb-6" />
                   <h3 className="text-2xl font-bold text-foreground mb-4">
-                    También te Visitamos
+                    También te Atendemos Online
                   </h3>
                   <p className="text-muted-foreground mb-6">
-                    Nuestro equipo puede visitarte para asesorarte en tu propio hogar, 
+                    Nuestro equipo puede asesorarte por WhatsApp para lo que necesites,
                     sin compromisos.
                   </p>
                   <Button variant="hero" size="lg" asChild>
-                    <a href="https://wa.me/1234567890?text=Hola! Me gustaría agendar una visita">
+                    <a href="https://wa.me/5492284598212?text=Hola! Me gustaría hacer una consulta">
                       <Phone className="h-4 w-4" />
-                      Agendar Visita
+                      Contactar por WhatsApp
                     </a>
                   </Button>
                 </div>
@@ -344,8 +344,8 @@ const About = () => {
                 </Link>
               </Button>
               <Button variant="outline" size="lg" className="bg-white/10 border-white/20 text-white hover:bg-white/20" asChild>
-                <Link to="/simulator">
-                  Simular Cuotas
+                <Link to="/contact">
+                  Contacto
                 </Link>
               </Button>
             </div>

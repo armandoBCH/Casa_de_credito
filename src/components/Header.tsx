@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "./ui/button.tsx";
 import { Badge } from "./ui/badge.tsx";
-import { Menu, X, Phone, ShoppingCart } from "lucide-react";
+import { Menu, X, ShoppingCart, Phone } from "lucide-react";
 import { useCart } from "../context/CartContext.tsx";
 
 const Header = () => {
@@ -50,9 +50,9 @@ const Header = () => {
           {/* Action Buttons */}
           <div className="hidden md:flex items-center space-x-4">
              <Button variant="ghost" asChild>
-              <a href="tel:+1234567890">
+              <a href="https://wa.me/5492284598212" target="_blank" rel="noopener noreferrer">
                 <Phone className="h-4 w-4" />
-                Contactar
+                WhatsApp
               </a>
             </Button>
             <Button variant="outline" asChild>
@@ -99,9 +99,9 @@ const Header = () => {
               ))}
               <div className="pt-4 pb-2 space-y-2 border-t border-border">
                 <Button variant="outline" size="sm" className="w-full" asChild>
-                  <a href="tel:+1234567890"  onClick={() => setIsMenuOpen(false)}>
+                  <a href="https://wa.me/5492284598212" target="_blank" rel="noopener noreferrer" onClick={() => setIsMenuOpen(false)}>
                     <Phone className="h-4 w-4" />
-                    Contactar
+                    WhatsApp
                   </a>
                 </Button>
                 <Button variant="accent" size="sm" className="w-full" asChild>
