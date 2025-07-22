@@ -143,14 +143,14 @@ const PromotionCard = ({ promotion }: { promotion: typeof promotions[0] }) => {
         {/* CTA */}
         <div className="flex gap-2">
           <Button variant="hero" size="sm" className="flex-1" asChild>
-            <ReactRouterDom.Link to="/catalog" className="flex items-center gap-2">
+            <ReactRouterDom.Link to="/catalog">
               <Gift className="h-4 w-4" />
-              <span>Ver Productos</span>
+              Ver Productos
             </ReactRouterDom.Link>
           </Button>
           <Button variant="outline" size="sm" asChild>
             <a href="https://wa.me/1234567890?text=Hola! Me interesa la promoción: {promotion.title}">
-              <span>Consultar</span>
+              Consultar
             </a>
           </Button>
         </div>
@@ -239,12 +239,12 @@ const Promotions = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button variant="secondary" size="lg" asChild>
               <ReactRouterDom.Link to="/catalog">
-                <span>Ver Catálogo Completo</span>
+                Ver Catálogo Completo
               </ReactRouterDom.Link>
             </Button>
             <Button variant="outline" size="lg" className="bg-white/10 border-white/20 text-white hover:bg-white/20" asChild>
               <a href="https://wa.me/1234567890?text=Hola! Quiero consultar sobre las promociones">
-                <span>Contactar por WhatsApp</span>
+                Contactar por WhatsApp
               </a>
             </Button>
           </div>

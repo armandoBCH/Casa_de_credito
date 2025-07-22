@@ -174,7 +174,7 @@ const Categories = () => {
         <div className="text-center mt-12">
           <Button variant="hero" size="lg" asChild>
             <ReactRouterDom.Link to="/catalog">
-              <span>Ver Catálogo Completo</span>
+              Ver Catálogo Completo
               <ArrowRight className="h-5 w-5" />
             </ReactRouterDom.Link>
           </Button>
@@ -252,12 +252,12 @@ const CTA = () => {
         <div className="flex flex-col sm:flex-row gap-4 justify-center animate-scale-in">
           <Button variant="secondary" size="lg" asChild>
             <ReactRouterDom.Link to="/catalog">
-              <span>Ver Productos</span>
+              Ver Productos
             </ReactRouterDom.Link>
           </Button>
           <Button variant="outline" size="lg" className="bg-white/10 border-white/20 text-white hover:bg-white/20" asChild>
             <a href="https://wa.me/1234567890?text=Hola! Quiero consultar sobre financiamiento">
-              <span>Contactar Ahora</span>
+              Contactar Ahora
             </a>
           </Button>
         </div>

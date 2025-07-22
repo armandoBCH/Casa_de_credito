@@ -44,14 +44,14 @@ const Hero = () => {
           <div className="flex flex-col sm:flex-row gap-4 animate-slide-up">
             <Button variant="accent" size="lg" asChild>
               <ReactRouterDom.Link to="/catalog">
-                <span>Ver Catálogo</span>
+                Ver Catálogo
                 <ArrowRight className="h-5 w-5" />
               </ReactRouterDom.Link>
             </Button>
             <Button variant="outline" size="lg" className="bg-white/10 border-white/20 text-white hover:bg-white/20" asChild>
               <ReactRouterDom.Link to="/simulator">
                 <Calculator className="h-5 w-5" />
-                <span>Simular Cuotas</span>
+                Simular Cuotas
               </ReactRouterDom.Link>
             </Button>
           </div>

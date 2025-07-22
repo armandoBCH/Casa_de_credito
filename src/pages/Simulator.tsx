@@ -127,14 +127,14 @@ const Simulator = () => {
                   onClick={resetForm}
                   className="flex-1"
                 >
-                  <span>Limpiar</span>
+                  Limpiar
                 </Button>
                 <Button 
                   variant="accent" 
                   className="flex-1"
                   disabled={!price || !months}
                 >
-                  <span>Calcular</span>
+                  Calcular
                 </Button>
               </div>
             </CardContent>
@@ -225,12 +225,12 @@ const Simulator = () => {
                 <div className="space-y-3">
                   <Button variant="hero" size="lg" className="w-full" asChild>
                     <a href="https://wa.me/1234567890?text=Hola! Me interesa solicitar financiación">
-                      <span>Solicitar Financiación</span>
+                      Solicitar Financiación
                     </a>
                   </Button>
                   <Button variant="outline" size="lg" className="w-full" asChild>
                     <a href="/catalog">
-                      <span>Ver Productos</span>
+                      Ver Productos
                     </a>
                   </Button>
                 </div>

@@ -25,84 +25,89 @@ const Header = () => {
           {/* Logo */}
           <ReactRouterDom.Link to="/" className="flex items-center space-x-3">
             <img src="/lovable-uploads/49914b77-2d53-4907-86de-257a71b67cb3.png" alt="Casa de Crédito" className="h-10 w-10" />
-            <span className="font-bold text-xl">Casa de Crédito</span>
+            <span className="font-bold text-xl text-primary">Casa de Crédito</span>
           </ReactRouterDom.Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-1">
-            {navigation.map((item) => (
-              <Button key={item.name} variant="ghost" asChild>
-                  <ReactRouterDom.Link
-                    to={item.href}
-                    className={`font-medium transition-colors duration-300 ${
-                      isActive(item.href) ? "text-primary" : "text-foreground/70 hover:text-primary"
-                    }`}
-                  >
-                    <span>{item.name}</span>
-                  </ReactRouterDom.Link>
-              </Button>
-            ))}
-          </nav>
-
-          {/* Desktop CTAs */}
-          <div className="hidden md:flex items-center gap-3">
-            <Button variant="outline" size="sm" asChild>
-              <a href="tel:+541112345678" className="flex items-center gap-2">
-                <Phone className="h-4 w-4" />
-                <span>Llamanos</span>
-              </a>
-            </Button>
-            <Button variant="hero" size="sm" asChild>
-              <ReactRouterDom.Link to="/simulator" className="flex items-center gap-2">
-                <Calculator className="h-4 w-4" />
-                <span>Simulador</span>
-              </ReactRouterDom.Link>
-            </Button>
-          </div>
-
-          {/* Mobile Menu Button */}
-          <div className="md:hidden">
-            <Button onClick={() => setIsMenuOpen(!isMenuOpen)} variant="ghost" size="icon">
-              {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-              <span className="sr-only">Abrir menú</span>
-            </Button>
-          </div>
-        </div>
-      </div>
-
-      {/* Mobile Menu */}
-      {isMenuOpen && (
-        <div className="md:hidden absolute top-16 left-0 w-full bg-background border-b border-border shadow-lg animate-accordion-down">
-          <nav className="flex flex-col space-y-2 px-4 py-6">
+          <nav className="hidden md:flex space-x-8">
             {navigation.map((item) => (
               <ReactRouterDom.Link
                 key={item.name}
                 to={item.href}
-                onClick={() => setIsMenuOpen(false)}
-                className={`block px-3 py-2 rounded-md text-base font-medium ${
-                  isActive(item.href) ? "bg-accent text-accent-foreground" : "text-foreground hover:bg-muted"
+                className={`text-sm font-medium transition-colors duration-300 hover:text-primary ${
+                  isActive(item.href)
+                    ? "text-primary font-semibold"
+                    : "text-muted-foreground"
                 }`}
               >
-                <span>{item.name}</span>
+                {item.name}
               </ReactRouterDom.Link>
             ))}
-            <div className="pt-4 border-t border-border mt-4 flex flex-col gap-3">
-              <Button variant="outline" asChild>
-                <a href="tel:+541112345678" className="flex items-center gap-2">
-                  <Phone className="h-4 w-4" />
-                  <span>Llamanos</span>
-                </a>
-              </Button>
-              <Button variant="hero" asChild>
-                <ReactRouterDom.Link to="/simulator" className="flex items-center gap-2">
-                  <Calculator className="h-4 w-4" />
-                  <span>Simulador</span>
-                </ReactRouterDom.Link>
-              </Button>
-            </div>
           </nav>
+
+          {/* Action Buttons */}
+          <div className="hidden md:flex items-center space-x-4">
+            <Button variant="outline" size="sm" asChild>
+              <ReactRouterDom.Link to="/simulator">
+                <Calculator className="h-4 w-4" />
+                Simular Cuotas
+              </ReactRouterDom.Link>
+            </Button>
+            <Button variant="accent" size="sm" asChild>
+              <a href="tel:+1234567890">
+                <Phone className="h-4 w-4" />
+                Contactar
+              </a>
+            </Button>
+          </div>
+
+          {/* Mobile menu button */}
+          <Button
+            variant="ghost"
+            size="icon"
+            className="md:hidden"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+          >
+            {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          </Button>
         </div>
-      )}
+
+        {/* Mobile Navigation */}
+        {isMenuOpen && (
+          <div className="md:hidden bg-background border-t border-border animate-slide-up">
+            <div className="px-2 pt-2 pb-3 space-y-1">
+              {navigation.map((item) => (
+                <ReactRouterDom.Link
+                  key={item.name}
+                  to={item.href}
+                  className={`block px-3 py-2 rounded-md text-base font-medium transition-colors duration-300 ${
+                    isActive(item.href)
+                      ? "text-primary bg-primary/10"
+                      : "text-muted-foreground hover:text-primary hover:bg-primary/5"
+                  }`}
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  {item.name}
+                </ReactRouterDom.Link>
+              ))}
+              <div className="pt-4 pb-2 space-y-2">
+                <Button variant="outline" size="sm" className="w-full" asChild>
+                  <ReactRouterDom.Link to="/simulator" onClick={() => setIsMenuOpen(false)}>
+                    <Calculator className="h-4 w-4" />
+                    Simular Cuotas
+                  </ReactRouterDom.Link>
+                </Button>
+                <Button variant="accent" size="sm" className="w-full" asChild>
+                  <a href="tel:+1234567890">
+                    <Phone className="h-4 w-4" />
+                    Contactar
+                  </a>
+                </Button>
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
     </header>
   );
 };

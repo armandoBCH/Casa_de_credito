@@ -161,9 +161,9 @@ const ProductCard = ({ product }: { product: typeof allProducts[0] }) => {
         </div>
 
         <Button variant="default" size="sm" className="w-full" asChild>
-          <ReactRouterDom.Link to={`/product/${product.id}`} className="flex items-center gap-2">
+          <ReactRouterDom.Link to={`/product/${product.id}`}>
             <ShoppingCart className="h-4 w-4" />
-            <span>Ver Producto</span>
+            Ver Producto
           </ReactRouterDom.Link>
         </Button>
       </CardContent>
@@ -293,7 +293,7 @@ const Catalog = () => {
                 setSortBy("name");
               }}
             >
-              <span>Limpiar Filtros</span>
+              Limpiar Filtros
             </Button>
           </div>
         )}

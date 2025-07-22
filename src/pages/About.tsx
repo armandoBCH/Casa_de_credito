@@ -316,9 +316,9 @@ const About = () => {
                     sin compromisos.
                   </p>
                   <Button variant="hero" size="lg" asChild>
-                    <a href="https://wa.me/1234567890?text=Hola! Me gustaría agendar una visita" className="flex items-center gap-2">
+                    <a href="https://wa.me/1234567890?text=Hola! Me gustaría agendar una visita">
                       <Phone className="h-4 w-4" />
-                      <span>Agendar Visita</span>
+                      Agendar Visita
                     </a>
                   </Button>
                 </div>
@@ -340,12 +340,12 @@ const About = () => {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button variant="secondary" size="lg" asChild>
                 <ReactRouterDom.Link to="/catalog">
-                  <span>Ver Productos</span>
+                  Ver Productos
                 </ReactRouterDom.Link>
               </Button>
               <Button variant="outline" size="lg" className="bg-white/10 border-white/20 text-white hover:bg-white/20" asChild>
                 <ReactRouterDom.Link to="/simulator">
-                  <span>Simular Cuotas</span>
+                  Simular Cuotas
                 </ReactRouterDom.Link>
               </Button>
             </div>

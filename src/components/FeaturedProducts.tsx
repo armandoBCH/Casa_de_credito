@@ -121,7 +121,7 @@ const ProductCard = ({ product }: { product: typeof featuredProducts[0] }) => {
           <Button variant="default" size="sm" className="flex-1" asChild>
             <ReactRouterDom.Link to={`/product/${product.id}`}>
               <ShoppingCart className="h-4 w-4" />
-              <span>Ver Producto</span>
+              Ver Producto
             </ReactRouterDom.Link>
           </Button>
         </div>
@@ -161,7 +161,7 @@ const FeaturedProducts = () => {
         <div className="text-center">
           <Button variant="hero" size="lg" asChild>
             <ReactRouterDom.Link to="/catalog">
-              <span>Ver Todo el Catálogo</span>
+              Ver Todo el Catálogo
             </ReactRouterDom.Link>
           </Button>
         </div>
