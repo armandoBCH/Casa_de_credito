@@ -63,8 +63,8 @@ const WhyChooseUs = () => {
           </div>
           <div className="relative animate-scale-in" style={{animationDelay: '0.2s'}}>
             <img 
-              src="https://images.unsplash.com/photo-1556742518-b827e6de6e35?auto=format&fit=crop&q=80&w=2070"
-              alt="Cliente satisfecho recibiendo su producto"
+              src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=2070"
+              alt="Equipo de Casa del Credito brindando confianza a un cliente."
               className="rounded-2xl shadow-card aspect-[4/5] object-cover"
             />
             <div className="absolute -bottom-4 -right-4 w-32 h-32 bg-primary/10 rounded-full blur-3xl -z-10 animate-pulse"></div>

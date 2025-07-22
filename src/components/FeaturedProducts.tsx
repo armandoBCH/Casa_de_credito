@@ -73,7 +73,7 @@ const ProductCard = ({ product }: { product: Product }) => {
         <p className="text-sm text-muted-foreground mb-2">{product.category}</p>
         
         {/* Product Name */}
-        <h3 className="font-semibold text-lg mb-3 line-clamp-2 group-hover:text-primary transition-colors flex-grow">
+        <h3 className="font-semibold text-lg mb-2 line-clamp-2 group-hover:text-primary transition-colors flex-grow">
           <Link to={`/product/${product.id}`} className="hover:underline">
             {product.name}
           </Link>
@@ -113,10 +113,8 @@ const FeaturedProducts = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 1200); // Simulate network delay
-    return () => clearTimeout(timer);
+    // Data is local, so we load it instantly to avoid flickering.
+    setIsLoading(false);
   }, []);
 
   return (
