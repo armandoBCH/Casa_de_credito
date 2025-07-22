@@ -65,7 +65,7 @@ const WhyChooseUs = () => {
             <img 
               src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=2070"
               alt="Equipo de Casa del Credito brindando confianza a un cliente."
-              className="rounded-2xl shadow-card aspect-[4/5] object-cover"
+              className="rounded-2xl shadow-card aspect-[4/3] object-cover"
             />
             <div className="absolute -bottom-4 -right-4 w-32 h-32 bg-primary/10 rounded-full blur-3xl -z-10 animate-pulse"></div>
              <div className="absolute -top-4 -left-4 w-40 h-40 bg-accent/10 rounded-full blur-3xl -z-10 animate-pulse delay-500"></div>
