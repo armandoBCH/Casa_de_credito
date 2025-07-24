@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Providers from "@/components/Providers";
+import React from "react";
 
 export const metadata: Metadata = {
   title: "Casa del Credito - Muebles y Electrodomésticos en Cuotas",

@@ -8,6 +8,7 @@ Este documento proporciona el contexto esencial para entender y desarrollar la a
 - **Negocio:** Venta de muebles, electrodomésticos y productos para el hogar.
 - **Propuesta de Valor Principal:** Ofrecer productos de calidad con opciones de financiamiento accesibles y transparentes (cuotas, descuentos).
 - **Público Objetivo:** Familias de Olavarría, Argentina y alrededores.
+- **Nota Histórica:** La aplicación es el resultado de una migración completa desde una arquitectura Single-Page Application (SPA) a Next.js, consolidando todo el frontend en esta tecnología.
 
 ## 2. Pila Tecnológica (Tech Stack)
 
@@ -75,6 +76,7 @@ Este documento proporciona el contexto esencial para entender y desarrollar la a
 ## 5. Directrices para Desarrollo (IA)
 
 -   **Consistencia de UI:** Para nuevos elementos visuales, **utilizar siempre** los componentes de `src/components/ui/`.
+-   **Rutas de Importación:** Utilizar siempre el alias de ruta `@/` configurado en `tsconfig.json` para importar módulos desde el directorio `src/`. Ejemplo: `import Component from '@/components/Component';`. Evitar rutas relativas (`../../`).
 -   **Manejo de Estado:**
     -   Para lógica del carrito, usar el hook `useCart()`.
     -   Para fetching de nuevos datos del servidor (futuro), integrar con TanStack Query.
