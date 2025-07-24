@@ -4,14 +4,14 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { toast } from "sonner";
-import Header from "../../src/components/Header";
-import Footer from "../../src/components/Footer";
-import { Button } from "../../src/components/ui/button";
-import { Input } from "../../src/components/ui/input";
-import { Textarea } from "../../src/components/ui/textarea";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../../src/components/ui/select";
-import { Card, CardContent, CardHeader, CardTitle } from "../../src/components/ui/card";
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "../../src/components/ui/form";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Phone, Mail, MapPin, Clock } from "lucide-react";
 
 const contactFormSchema = z.object({

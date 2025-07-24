@@ -7,7 +7,7 @@ import Image from "next/image";
 import { Button } from "./ui/button";
 import { Badge } from "./ui/badge";
 import { Menu, X, ShoppingCart, Phone, Instagram } from "lucide-react";
-import { useCart } from "../context/CartContext";
+import { useCart } from "@/context/CartContext";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);

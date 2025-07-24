@@ -6,8 +6,8 @@ import { Badge } from "./ui/badge";
 import { ShoppingCart, Eye } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
-import { products, Product } from "../data/products";
-import { useCart } from "../context/CartContext";
+import { products, Product } from "@/data/products";
+import { useCart } from "@/context/CartContext";
 import { toast } from "sonner";
 
 const featuredProducts = products.filter(p => p.isPromoted).slice(0, 3);

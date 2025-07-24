@@ -1,10 +1,10 @@
 "use client";
 
-import Header from "../../src/components/Header";
-import Footer from "../../src/components/Footer";
-import { useCart } from "../../src/context/CartContext";
-import { Button } from "../../src/components/ui/button";
-import { Card } from "../../src/components/ui/card";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import { useCart } from "@/context/CartContext";
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
 import Link from "next/link";
 import { useRouter } from 'next/navigation';
 import { Plus, Minus, Trash2, ShoppingCart, ArrowRight } from "lucide-react";

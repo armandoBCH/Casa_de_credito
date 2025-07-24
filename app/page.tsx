@@ -1,11 +1,11 @@
-import Header from "../src/components/Header";
-import Hero from "../src/components/Hero";
-import FeaturedProducts from "../src/components/FeaturedProducts";
-import { Categories, Testimonials, CTA } from "../src/components/HomeSections";
-import Footer from "../src/components/Footer";
-import WhyChooseUs from "../src/components/WhyChooseUs";
-import HomePromotions from "../src/components/HomePromotions";
-import SimulatorCTA from "../src/components/SimulatorCTA";
+import Header from "@/components/Header";
+import Hero from "@/components/Hero";
+import FeaturedProducts from "@/components/FeaturedProducts";
+import { Categories, Testimonials, CTA } from "@/components/HomeSections";
+import Footer from "@/components/Footer";
+import WhyChooseUs from "@/components/WhyChooseUs";
+import HomePromotions from "@/components/HomePromotions";
+import SimulatorCTA from "@/components/SimulatorCTA";
 
 const Index = () => {
   return (

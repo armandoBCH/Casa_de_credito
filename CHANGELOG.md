@@ -8,11 +8,12 @@ El formato se basa en [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), 
 
 ## [Unreleased]
 
+### Fixed
+- **2024-07-24:** Corregidas las rutas de importación en toda la aplicación para usar consistentemente el alias de ruta `@/` en lugar de rutas relativas o alias incorrectos. Esto soluciona los errores `Module not found` durante el proceso de compilación de Vercel.
+- **2024-07-24:** Corregido el conflicto de dependencias de `eslint` (`ERESOLVE`) al degradar `eslint` a la versión 8 y ajustar los paquetes relacionados para asegurar la compatibilidad con `eslint-config-next`.
+
 ### Added
 - **2024-07-23:** Creación del archivo `CHANGELOG.md` para registrar todas las modificaciones futuras del proyecto y mantener un historial de cambios.
 
 ### Removed
 - **2024-07-23:** Eliminados archivos obsoletos de la configuración SPA anterior (`index.html`, `index.tsx`, `metadata.json`) para finalizar la migración a Next.js y solucionar errores de resolución de módulos en el navegador.
-
-### Fixed
-- **2024-07-24:** Corregido el conflicto de dependencias de `eslint` (`ERESOLVE`) al degradar `eslint` a la versión 8 y ajustar los paquetes relacionados para asegurar la compatibilidad con `eslint-config-next`.

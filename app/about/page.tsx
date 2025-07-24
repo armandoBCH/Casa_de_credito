@@ -1,8 +1,10 @@
-import Header from "../../src/components/Header";
-import Footer from "../../src/components/Footer";
-import { Card, CardContent } from "../../src/components/ui/card";
-import { Button } from "../../src/components/ui/button";
-import { Badge } from "../../src/components/ui/badge";
+"use client";
+
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 import { 
   Heart, 
   Users, 

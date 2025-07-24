@@ -1,5 +1,5 @@
 import { notFound } from 'next/navigation';
-import { products } from "../../../src/data/products";
+import { products } from "@/data/products";
 import ProductDetailClient from "./ProductDetailClient";
 
 // This is a server component

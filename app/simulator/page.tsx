@@ -1,13 +1,13 @@
 "use client";
 
 import { useState } from "react";
-import Header from "../../src/components/Header";
-import Footer from "../../src/components/Footer";
-import { Button } from "../../src/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "../../src/components/ui/card";
-import { Input } from "../../src/components/ui/input";
-import { Label } from "../../src/components/ui/label";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../../src/components/ui/select";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Calculator, TrendingUp, DollarSign, Clock, CheckCircle } from "lucide-react";
 
 const interestRates = [

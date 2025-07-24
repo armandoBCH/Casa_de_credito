@@ -1,17 +1,17 @@
 "use client";
 
 import { useState } from "react";
-import Header from "../../src/components/Header";
-import Footer from "../../src/components/Footer";
-import { Button } from "../../src/components/ui/button";
-import { Card, CardContent } from "../../src/components/ui/card";
-import { Badge } from "../../src/components/ui/badge";
-import { Input } from "../../src/components/ui/input";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../../src/components/ui/select";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Input } from "@/components/ui/input";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Search, Filter, ShoppingCart, Eye } from "lucide-react";
 import Link from "next/link";
-import { products as allProducts, Product } from "../../src/data/products";
-import { useCart } from "../../src/context/CartContext";
+import { products as allProducts, Product } from "@/data/products";
+import { useCart } from "@/context/CartContext";
 import { toast } from "sonner";
 
 const categories = ["Todos", "Muebles", "Electrónicos", "Electrodomésticos"];
