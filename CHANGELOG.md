@@ -13,3 +13,6 @@ El formato se basa en [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), 
 
 ### Removed
 - **2024-07-23:** Eliminados archivos obsoletos de la configuración SPA anterior (`index.html`, `index.tsx`, `metadata.json`) para finalizar la migración a Next.js y solucionar errores de resolución de módulos en el navegador.
+
+### Fixed
+- **2024-07-24:** Corregido el conflicto de dependencias de `eslint` (`ERESOLVE`) al degradar `eslint` a la versión 8 y ajustar los paquetes relacionados para asegurar la compatibilidad con `eslint-config-next`.
