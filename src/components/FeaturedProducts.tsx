@@ -1,10 +1,13 @@
-import { Button } from "./ui/button.tsx";
-import { Card, CardContent } from "./ui/card.tsx";
-import { Badge } from "./ui/badge.tsx";
+"use client";
+
+import { Button } from "./ui/button";
+import { Card, CardContent } from "./ui/card";
+import { Badge } from "./ui/badge";
 import { ShoppingCart, Eye } from "lucide-react";
-import { Link } from "react-router-dom";
-import { products, Product } from "../data/products.ts";
-import { useCart } from "../context/CartContext.tsx";
+import Link from "next/link";
+import Image from "next/image";
+import { products, Product } from "../data/products";
+import { useCart } from "../context/CartContext";
 import { toast } from "sonner";
 
 const featuredProducts = products.filter(p => p.isPromoted).slice(0, 3);
@@ -31,10 +34,12 @@ const ProductCard = ({ product }: { product: Product }) => {
     <Card className="group bg-card border-border hover:shadow-card transition-all duration-300 hover:scale-105 h-full">
       <div className="relative overflow-hidden">
         {/* Product Image */}
-        <Link to={`/product/${product.id}`}>
-          <img
+        <Link href={`/product/${product.id}`}>
+          <Image
             src={product.image}
             alt={product.name}
+            width={400}
+            height={300}
             className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110"
           />
         </Link>
@@ -56,7 +61,7 @@ const ProductCard = ({ product }: { product: Product }) => {
         {/* Quick Actions */}
         <div className="absolute top-3 right-3 flex flex-col gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
           <Button size="icon" variant="secondary" className="h-8 w-8 bg-white/90 hover:bg-white" asChild>
-             <Link to={`/product/${product.id}`}>
+             <Link href={`/product/${product.id}`}>
                 <Eye className="h-4 w-4" />
              </Link>
           </Button>
@@ -72,7 +77,7 @@ const ProductCard = ({ product }: { product: Product }) => {
         
         {/* Product Name */}
         <h3 className="font-semibold text-lg mb-2 line-clamp-2 group-hover:text-primary transition-colors flex-grow">
-          <Link to={`/product/${product.id}`} className="hover:underline">
+          <Link href={`/product/${product.id}`} className="hover:underline">
             {product.name}
           </Link>
         </h3>
@@ -137,7 +142,7 @@ const FeaturedProducts = () => {
         {/* CTA */}
         <div className="text-center">
           <Button variant="hero" size="lg" asChild>
-            <Link to="/catalog">
+            <Link href="/catalog">
               Ver Todo el Catálogo
             </Link>
           </Button>

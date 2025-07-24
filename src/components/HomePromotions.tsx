@@ -1,26 +1,27 @@
-import { Link } from "react-router-dom";
-import { Card, CardContent } from "./ui/card.tsx";
-import { Badge } from "./ui/badge.tsx";
-import { Button } from "./ui/button.tsx";
+import Link from "next/link";
+import Image from "next/image";
+import { Card, CardContent } from "./ui/card";
+import { Badge } from "./ui/badge";
+import { Button } from "./ui/button";
 import { ArrowRight } from "lucide-react";
 
 const promotionsData = [
   {
     title: "Hasta 50% OFF",
     description: "En productos seleccionados por Black Friday.",
-    image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=800&q=80",
+    image: "https://placehold.co/800x600/111111/FFFFFF?text=50%25+OFF",
     link: "/promotions"
   },
   {
     title: "12 Cuotas Sin Interés",
     description: "En toda la tienda con tarjetas de crédito.",
-    image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=800&q=80",
+    image: "https://placehold.co/800x600/3498DB/FFFFFF?text=12+Cuotas",
     link: "/promotions"
   },
   {
     title: "Combos Exclusivos",
     description: "Equipá tu living o cocina y ahorrá.",
-    image: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=800&q=80",
+    image: "https://placehold.co/800x600/E74C3C/FFFFFF?text=Combos",
     link: "/promotions"
   },
 ];
@@ -41,10 +42,10 @@ const HomePromotions = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {promotionsData.map((promo, index) => (
-            <Link to={promo.link} key={index} className="group block animate-scale-in" style={{ animationDelay: `${index * 0.1}s` }}>
+            <Link href={promo.link} key={index} className="group block animate-scale-in" style={{ animationDelay: `${index * 0.1}s` }}>
               <Card className="h-full overflow-hidden hover:shadow-card transition-all duration-300 hover:scale-105">
                 <div className="relative h-56">
-                  <img src={promo.image} alt={promo.title} className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110" />
+                  <Image src={promo.image} alt={promo.title} width={800} height={600} className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
                 </div>
                 <CardContent className="p-6">
@@ -58,7 +59,7 @@ const HomePromotions = () => {
 
         <div className="text-center mt-12">
           <Button variant="hero" size="lg" asChild>
-            <Link to="/promotions">
+            <Link href="/promotions">
               Ver Todas las Promociones
               <ArrowRight className="h-5 w-5" />
             </Link>

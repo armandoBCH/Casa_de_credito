@@ -1,15 +1,17 @@
+"use client";
+
 import { useState } from "react";
-import Header from "../components/Header.tsx";
-import Footer from "../components/Footer.tsx";
-import { Button } from "../components/ui/button.tsx";
-import { Card, CardContent } from "../components/ui/card.tsx";
-import { Badge } from "../components/ui/badge.tsx";
-import { Input } from "../components/ui/input.tsx";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../components/ui/select.tsx";
+import Header from "../../src/components/Header";
+import Footer from "../../src/components/Footer";
+import { Button } from "../../src/components/ui/button";
+import { Card, CardContent } from "../../src/components/ui/card";
+import { Badge } from "../../src/components/ui/badge";
+import { Input } from "../../src/components/ui/input";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../../src/components/ui/select";
 import { Search, Filter, ShoppingCart, Eye } from "lucide-react";
-import { Link } from "react-router-dom";
-import { products as allProducts, Product } from "../data/products.ts";
-import { useCart } from "../context/CartContext.tsx";
+import Link from "next/link";
+import { products as allProducts, Product } from "../../src/data/products";
+import { useCart } from "../../src/context/CartContext";
 import { toast } from "sonner";
 
 const categories = ["Todos", "Muebles", "Electrónicos", "Electrodomésticos"];
@@ -40,7 +42,7 @@ const ProductCard = ({ product }: { product: Product }) => {
   return (
     <Card className="group bg-card border-border hover:shadow-card transition-all duration-300 hover:scale-105 h-full">
       <div className="relative overflow-hidden">
-        <Link to={`/product/${product.id}`}>
+        <Link href={`/product/${product.id}`}>
         <img
           src={product.image}
           alt={product.name}
@@ -63,7 +65,7 @@ const ProductCard = ({ product }: { product: Product }) => {
 
         <div className="absolute top-3 right-3 flex flex-col gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
           <Button size="icon" variant="secondary" className="h-8 w-8 bg-white/90 hover:bg-white" asChild>
-            <Link to={`/product/${product.id}`}>
+            <Link href={`/product/${product.id}`}>
               <Eye className="h-4 w-4" />
             </Link>
           </Button>
@@ -76,7 +78,7 @@ const ProductCard = ({ product }: { product: Product }) => {
       <CardContent className="p-4 flex flex-col h-[calc(100%-192px)]">
         <p className="text-sm text-muted-foreground mb-2">{product.category}</p>
         <h3 className="font-semibold text-lg mb-2 line-clamp-2 group-hover:text-primary transition-colors flex-grow">
-           <Link to={`/product/${product.id}`} className="hover:underline">
+           <Link href={`/product/${product.id}`} className="hover:underline">
             {product.name}
           </Link>
         </h3>

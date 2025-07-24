@@ -3,8 +3,9 @@ import {
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "./ui/accordion.tsx";
+} from "./ui/accordion";
 import { CreditCard, Truck, ShieldCheck, LifeBuoy } from "lucide-react";
+import Image from "next/image";
 
 const whyChooseUsData = [
   {
@@ -62,9 +63,11 @@ const WhyChooseUs = () => {
             </Accordion>
           </div>
           <div className="relative animate-scale-in" style={{animationDelay: '0.2s'}}>
-            <img 
-              src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=2070"
+            <Image 
+              src="https://placehold.co/2070x1380/E8F8F5/17A589?text=Confianza"
               alt="Equipo de Casa del Credito brindando confianza a un cliente."
+              width={2070}
+              height={1380}
               className="rounded-2xl shadow-card aspect-[4/3] object-cover"
             />
             <div className="absolute -bottom-4 -right-4 w-32 h-32 bg-primary/10 rounded-full blur-3xl -z-10 animate-pulse"></div>

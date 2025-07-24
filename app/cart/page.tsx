@@ -1,10 +1,12 @@
-import Header from "../components/Header.tsx";
-import Footer from "../components/Footer.tsx";
-import { useCart } from "../context/CartContext.tsx";
-import { Button } from "../components/ui/button.tsx";
-import { Card, CardContent, CardHeader, CardTitle } from "../components/ui/card.tsx";
-import { Input } from "../components/ui/input.tsx";
-import { Link, useNavigate } from "react-router-dom";
+"use client";
+
+import Header from "../../src/components/Header";
+import Footer from "../../src/components/Footer";
+import { useCart } from "../../src/context/CartContext";
+import { Button } from "../../src/components/ui/button";
+import { Card } from "../../src/components/ui/card";
+import Link from "next/link";
+import { useRouter } from 'next/navigation';
 import { Plus, Minus, Trash2, ShoppingCart, ArrowRight } from "lucide-react";
 import { toast } from "sonner";
 
@@ -16,9 +18,9 @@ const formatPrice = (price: number) => {
   }).format(price);
 };
 
-const Cart = () => {
+const CartPage = () => {
   const { cartItems, updateQuantity, removeFromCart, totalPrice } = useCart();
-  const navigate = useNavigate();
+  const router = useRouter();
 
   const handleRemove = (productId: number, productName: string) => {
     removeFromCart(productId);
@@ -26,7 +28,7 @@ const Cart = () => {
   };
   
   const handleCheckout = () => {
-      navigate('/checkout');
+      router.push('/checkout');
   }
 
   return (
@@ -45,7 +47,7 @@ const Cart = () => {
               Parece que todavía no has agregado ningún producto.
             </p>
             <Button asChild>
-              <Link to="/catalog">Explorar Catálogo</Link>
+              <Link href="/catalog">Explorar Catálogo</Link>
             </Button>
           </div>
         ) : (
@@ -55,7 +57,7 @@ const Cart = () => {
                 <Card key={product.id} className="flex items-center p-4">
                   <img src={product.image} alt={product.name} className="w-24 h-24 object-cover rounded-md mr-4" />
                   <div className="flex-grow">
-                    <Link to={`/product/${product.id}`} className="font-semibold text-lg hover:text-primary transition-colors">{product.name}</Link>
+                    <Link href={`/product/${product.id}`} className="font-semibold text-lg hover:text-primary transition-colors">{product.name}</Link>
                     <p className="text-muted-foreground text-sm">{product.category}</p>
                     <p className="text-primary font-bold mt-1">{formatPrice(product.price)}</p>
                   </div>
@@ -80,26 +82,26 @@ const Cart = () => {
 
             <div className="lg:col-span-1">
               <Card className="sticky top-24">
-                <CardHeader>
-                  <CardTitle>Resumen de Compra</CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  <div className="flex justify-between">
-                    <span className="text-muted-foreground">Subtotal</span>
-                    <span className="font-semibold">{formatPrice(totalPrice)}</span>
+                <div className="p-6">
+                  <h2 className="text-xl font-bold mb-4">Resumen de Compra</h2>
+                  <div className="space-y-4">
+                    <div className="flex justify-between">
+                      <span className="text-muted-foreground">Subtotal</span>
+                      <span className="font-semibold">{formatPrice(totalPrice)}</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-muted-foreground">Envío</span>
+                      <span className="font-semibold text-success">Gratis</span>
+                    </div>
+                    <div className="border-t border-border pt-4 flex justify-between text-xl font-bold">
+                      <span>Total</span>
+                      <span>{formatPrice(totalPrice)}</span>
+                    </div>
+                    <Button variant="hero" size="lg" className="w-full" onClick={handleCheckout}>
+                      Continuar Compra <ArrowRight className="ml-2 h-5 w-5" />
+                    </Button>
                   </div>
-                  <div className="flex justify-between">
-                    <span className="text-muted-foreground">Envío</span>
-                    <span className="font-semibold text-success">Gratis</span>
-                  </div>
-                  <div className="border-t border-border pt-4 flex justify-between text-xl font-bold">
-                    <span>Total</span>
-                    <span>{formatPrice(totalPrice)}</span>
-                  </div>
-                  <Button variant="hero" size="lg" className="w-full" onClick={handleCheckout}>
-                    Continuar Compra <ArrowRight className="ml-2 h-5 w-5" />
-                  </Button>
-                </CardContent>
+                </div>
               </Card>
             </div>
           </div>
@@ -110,4 +112,4 @@ const Cart = () => {
   );
 };
 
-export default Cart;
+export default CartPage;

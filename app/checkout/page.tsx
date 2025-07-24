@@ -1,21 +1,23 @@
+"use client";
+
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { toast } from "sonner";
-import Header from "../components/Header.tsx";
-import Footer from "../components/Footer.tsx";
-import { Button } from "../components/ui/button.tsx";
-import { Input } from "../components/ui/input.tsx";
-import { Card, CardContent, CardHeader, CardTitle } from "../components/ui/card.tsx";
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "../components/ui/form.tsx";
-import { useCart } from "../context/CartContext.tsx";
-import { useNavigate } from "react-router-dom";
+import Header from "../../src/components/Header";
+import Footer from "../../src/components/Footer";
+import { Button } from "../../src/components/ui/button";
+import { Input } from "../../src/components/ui/input";
+import { Card, CardContent, CardHeader, CardTitle } from "../../src/components/ui/card";
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "../../src/components/ui/form";
+import { useCart } from "../../src/context/CartContext";
+import { useRouter } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
-import { Separator } from "../components/ui/separator.tsx";
-import { RadioGroup, RadioGroupItem } from "../components/ui/radio-group.tsx";
+import { Separator } from "../../src/components/ui/separator";
+import { RadioGroup, RadioGroupItem } from "../../src/components/ui/radio-group";
 import { Banknote, CreditCard, Landmark } from "lucide-react";
-import { Label } from "../components/ui/label.tsx";
-import { Badge } from "../components/ui/badge.tsx";
+import { Label } from "../../src/components/ui/label";
+import { Badge } from "../../src/components/ui/badge";
 
 const formatPrice = (price: number) => {
   return new Intl.NumberFormat('es-AR', { style: 'currency', currency: 'ARS', minimumFractionDigits: 0 }).format(price);
@@ -56,15 +58,15 @@ type CheckoutFormValues = z.infer<typeof checkoutSchema>;
 
 const Checkout = () => {
   const { cartItems, totalPrice, clearCart } = useCart();
-  const navigate = useNavigate();
+  const router = useRouter();
   const [paymentMethod, setPaymentMethod] = useState("card");
 
   useEffect(() => {
     if (cartItems.length === 0) {
-      navigate("/catalog");
+      router.push("/catalog");
       toast.info("Tu carrito está vacío. ¡Llenalo con nuestros productos!");
     }
-  }, [cartItems, navigate]);
+  }, [cartItems, router]);
 
   const form = useForm<CheckoutFormValues>({
     resolver: zodResolver(checkoutSchema),
@@ -91,7 +93,7 @@ const Checkout = () => {
       description: "Gracias por tu compra. Te hemos enviado un email con los detalles.",
     });
     clearCart();
-    navigate("/");
+    router.push("/");
   };
   
   if (cartItems.length === 0) {

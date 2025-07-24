@@ -1,19 +1,22 @@
+"use client";
+
 import { useState, useEffect } from "react";
-import { useParams, Link } from "react-router-dom";
-import Header from "../components/Header.tsx";
-import Footer from "../components/Footer.tsx";
-import { products, Product } from "../data/products.ts";
-import NotFound from "./NotFound.tsx";
-import { Button } from "../components/ui/button.tsx";
-import { Card, CardContent } from "../components/ui/card.tsx";
-import { Badge } from "../components/ui/badge.tsx";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "../components/ui/tabs.tsx";
-import { Table, TableBody, TableCell, TableRow } from "../components/ui/table.tsx";
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "../components/ui/carousel.tsx";
-import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from "../components/ui/breadcrumb.tsx";
+import Link from "next/link";
+import Header from "../../../src/components/Header";
+import Footer from "../../../src/components/Footer";
+import { Product } from "../../../src/data/products";
+import { Button } from "../../../src/components/ui/button";
+import { Card, CardContent } from "../../../src/components/ui/card";
+import { Badge } from "../../../src/components/ui/badge";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../../src/components/ui/tabs";
+import { Table, TableBody, TableCell, TableRow } from "../../../src/components/ui/table";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "../../../src/components/ui/carousel";
+import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from "../../../src/components/ui/breadcrumb";
 import { Star, CheckCircle, Truck, Shield, MessageSquare, Plus, Minus, ShoppingCart, Banknote, Landmark, CreditCard } from "lucide-react";
-import { useCart } from "../context/CartContext.tsx";
+import { useCart } from "../../../src/context/CartContext";
 import { toast } from "sonner";
+import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 const formatPrice = (price: number) => {
   return new Intl.NumberFormat('es-AR', {
@@ -23,50 +26,35 @@ const formatPrice = (price: number) => {
   }).format(price);
 };
 
-const ProductDetail = () => {
-  const { id } = useParams<{ id: string }>();
-  const [product, setProduct] = useState<Product | null>(null);
-  const [relatedProducts, setRelatedProducts] = useState<Product[]>([]);
-  const [mainImage, setMainImage] = useState<string>("");
+interface ProductDetailClientProps {
+    product: Product;
+    relatedProducts: Product[];
+}
+
+const ProductDetailClient = ({ product, relatedProducts }: ProductDetailClientProps) => {
+  const [mainImage, setMainImage] = useState<string>(product.image);
   const [quantity, setQuantity] = useState(1);
   const { addToCart } = useCart();
-  
+  const router = useRouter();
+
   useEffect(() => {
-    const productId = parseInt(id || "0");
-    const foundProduct = products.find((p) => p.id === productId) || null;
-    setProduct(foundProduct);
-
-    if (foundProduct) {
-      setMainImage(foundProduct.image);
-      setQuantity(1);
-      const related = products.filter(
-        (p) => p.category === foundProduct.category && p.id !== foundProduct.id
-      ).slice(0, 5);
-      setRelatedProducts(related);
-    }
-  }, [id]);
-
-  if (!product) {
-    return <NotFound />;
-  }
+    setMainImage(product.image);
+    setQuantity(1);
+  }, [product]);
 
   const handleQuantityChange = (amount: number) => {
     setQuantity(prev => Math.max(1, prev + amount));
   };
   
   const handleAddToCart = () => {
-    if(product) {
-        addToCart(product, quantity);
-        toast.success(`${product.name} agregado al carrito`, {
-            description: `Cantidad: ${quantity}, Total: ${formatPrice(product.price * quantity)}`,
-            action: {
-                label: "Ver Carrito",
-                onClick: () => {
-                    window.location.href = '/cart';
-                }
-            }
-        });
-    }
+    addToCart(product, quantity);
+    toast.success(`${product.name} agregado al carrito`, {
+        description: `Cantidad: ${quantity}, Total: ${formatPrice(product.price * quantity)}`,
+        action: {
+            label: "Ver Carrito",
+            onClick: () => router.push('/cart'),
+        }
+    });
   }
 
   return (
@@ -77,19 +65,19 @@ const ProductDetail = () => {
           <BreadcrumbList>
             <BreadcrumbItem>
               <BreadcrumbLink asChild>
-                <Link to="/">Inicio</Link>
+                <Link href="/">Inicio</Link>
               </BreadcrumbLink>
             </BreadcrumbItem>
             <BreadcrumbSeparator />
             <BreadcrumbItem>
               <BreadcrumbLink asChild>
-                <Link to="/catalog">Catálogo</Link>
+                <Link href="/catalog">Catálogo</Link>
               </BreadcrumbLink>
             </BreadcrumbItem>
             <BreadcrumbSeparator />
             <BreadcrumbItem>
                <BreadcrumbLink asChild>
-                <Link to={`/catalog?category=${product.category}`}>{product.category}</Link>
+                <Link href={`/catalog?category=${product.category}`}>{product.category}</Link>
               </BreadcrumbLink>
             </BreadcrumbItem>
             <BreadcrumbSeparator />
@@ -103,7 +91,7 @@ const ProductDetail = () => {
           {/* Image Gallery */}
           <div className="animate-fade-in">
             <Card className="overflow-hidden">
-              <img src={mainImage} alt={product.name} className="w-full h-auto object-cover aspect-[4/3]" />
+              <Image src={mainImage} alt={product.name} width={800} height={600} className="w-full h-auto object-cover aspect-[4/3]" />
             </Card>
             <div className="grid grid-cols-5 gap-2 mt-2">
               {product.images.map((img, idx) => (
@@ -112,7 +100,7 @@ const ProductDetail = () => {
                   className={`overflow-hidden cursor-pointer border-2 ${mainImage === img ? 'border-primary' : 'border-transparent'}`}
                   onClick={() => setMainImage(img)}
                 >
-                  <img src={img} alt={`${product.name} view ${idx+1}`} className="w-full h-full object-cover aspect-square"/>
+                  <Image src={img} alt={`${product.name} view ${idx+1}`} width={150} height={150} className="w-full h-full object-cover aspect-square"/>
                 </Card>
               ))}
             </div>
@@ -222,9 +210,9 @@ const ProductDetail = () => {
                 <CarouselItem key={p.id} className="md:basis-1/2 lg:basis-1/3">
                   <div className="p-1">
                     <Card className="group bg-card border-border hover:shadow-card transition-all duration-300">
-                       <Link to={`/product/${p.id}`} className="block">
+                       <Link href={`/product/${p.id}`} className="block">
                          <div className="overflow-hidden rounded-t-lg">
-                           <img src={p.image} alt={p.name} className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"/>
+                           <Image src={p.image} alt={p.name} width={400} height={300} className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"/>
                          </div>
                         <CardContent className="p-4">
                            <h3 className="font-semibold text-md mb-2 line-clamp-2">{p.name}</h3>
@@ -246,4 +234,4 @@ const ProductDetail = () => {
   );
 };
 
-export default ProductDetail;
+export default ProductDetailClient;

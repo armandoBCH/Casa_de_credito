@@ -19,9 +19,12 @@ export type Product = {
 };
 
 // Image URLs
-const sofaImage = "/assets/product-sofa.jpg";
-const tvImage = "/assets/product-tv.jpg";
-const appliancesImage = "/assets/product-appliances.jpg";
+const sofaImage = "https://placehold.co/800x600/e97451/ffffff?text=Sofa+Moderno";
+const tvImage = "https://placehold.co/800x600/333333/ffffff?text=Smart+TV";
+const appliancesImage = "https://placehold.co/800x600/cccccc/333333?text=Combo+Cocina";
+const diningImage = "https://placehold.co/800x600/a39a92/ffffff?text=Comedor";
+const notebookImage = "https://placehold.co/800x600/2c3e50/ffffff?text=Notebook+Gamer";
+const fridgeImage = "https://placehold.co/800x600/bdc3c7/2c3e50?text=Heladera";
 
 export const products: Product[] = [
   {
@@ -33,7 +36,7 @@ export const products: Product[] = [
     installmentPrice: Math.round(89999 / 12),
     installments: 12,
     image: sofaImage,
-    images: [sofaImage, "https://images.unsplash.com/photo-1540574163024-5735f3032c85?w=500", "https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?w=500"],
+    images: [sofaImage, "https://placehold.co/500x500/e46a41/ffffff?text=Vista+2", "https://placehold.co/500x500/d85e35/ffffff?text=Vista+3"],
     discount: 20,
     isPromoted: true,
     shortDescription: "Renová tu living con este juego de sillones de diseño contemporáneo y máximo confort. Tapizado en tela de alta resistencia.",
@@ -57,7 +60,7 @@ export const products: Product[] = [
     installmentPrice: Math.round(129999 / 12),
     installments: 12,
     image: tvImage,
-    images: [tvImage, "https://images.unsplash.com/photo-1593784917033-2c264fac358d?w=500", "https://images.unsplash.com/photo-1549488344-cbb6c34cf08b?w=500"],
+    images: [tvImage, "https://placehold.co/500x500/222222/ffffff?text=Detalle+Pantalla", "https://placehold.co/500x500/444444/ffffff?text=Control+Remoto"],
     discount: 15,
     isPromoted: false,
     shortDescription: "Viví una experiencia visual inmersiva con colores vibrantes y detalles nítidos gracias a la tecnología 4K UHD.",
@@ -81,7 +84,7 @@ export const products: Product[] = [
     installmentPrice: Math.round(199999 / 12),
     installments: 12,
     image: appliancesImage,
-    images: [appliancesImage, "https://images.unsplash.com/photo-1604323133276-c45681d4315a?w=500"],
+    images: [appliancesImage, "https://placehold.co/500x500/d0d0d0/333333?text=Detalle+Cocina"],
     discount: 25,
     isPromoted: true,
     shortDescription: "Equipá tu cocina con este combo de alta gama en acero inoxidable. Incluye heladera, cocina y microondas.",
@@ -104,8 +107,8 @@ export const products: Product[] = [
     originalPrice: 73332,
     installmentPrice: Math.round(65999 / 12),
     installments: 12,
-    image: "https://images.unsplash.com/photo-1533090481720-856c6e3c1fdc?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    images: ["https://images.unsplash.com/photo-1533090481720-856c6e3c1fdc?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"],
+    image: diningImage,
+    images: [diningImage],
     discount: 10,
     isPromoted: false,
     shortDescription: "Juego de comedor con mesa de vidrio y 6 sillas tapizadas, ideal para reuniones familiares y cenas con amigos.",
@@ -127,8 +130,8 @@ export const products: Product[] = [
     price: 299999,
     installmentPrice: Math.round(299999 / 12),
     installments: 12,
-    image: "https://images.unsplash.com/photo-1593642634315-48f5414c3ad9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    images: ["https://images.unsplash.com/photo-1593642634315-48f5414c3ad9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"],
+    image: notebookImage,
+    images: [notebookImage],
     discount: 0,
     isPromoted: true,
     shortDescription: "Potencia extrema para tus juegos y tareas de alta demanda con procesador de última generación y gráficos NVIDIA RTX.",
@@ -151,8 +154,8 @@ export const products: Product[] = [
     originalPrice: 231706,
     installmentPrice: Math.round(189999 / 12),
     installments: 12,
-    image: "https://images.unsplash.com/photo-1616453398788-b76015525950?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    images: ["https://images.unsplash.com/photo-1616453398788-b76015525950?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"],
+    image: fridgeImage,
+    images: [fridgeImage],
     discount: 18,
     isPromoted: false,
     shortDescription: "Gran capacidad y tecnología No Frost para mantener tus alimentos frescos por más tiempo sin preocuparte por la escarcha.",

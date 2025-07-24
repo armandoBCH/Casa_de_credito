@@ -1,13 +1,17 @@
+"use client";
+
 import { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
-import { Button } from "./ui/button.tsx";
-import { Badge } from "./ui/badge.tsx";
+import Link from "next/link";
+import { usePathname } from 'next/navigation';
+import Image from "next/image";
+import { Button } from "./ui/button";
+import { Badge } from "./ui/badge";
 import { Menu, X, ShoppingCart, Phone, Instagram } from "lucide-react";
-import { useCart } from "../context/CartContext.tsx";
+import { useCart } from "../context/CartContext";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const location = useLocation();
+  const pathname = usePathname();
   const { totalItems } = useCart();
 
   const navigation = [
@@ -18,15 +22,15 @@ const Header = () => {
     { name: "Contacto", href: "/contact" },
   ];
 
-  const isActive = (href: string) => location.pathname === href;
+  const isActive = (href: string) => pathname === href;
 
   return (
     <header className="bg-background/95 backdrop-blur-sm border-b border-border sticky top-0 z-50 shadow-card">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-3">
-            <img src="https://res.cloudinary.com/dbq5jp6jn/image/upload/v1753127509/Captura_de_pantalla_2025-07-21_164537_qjn0wq.png" alt="Casa del Credito" className="h-10 w-10" />
+          <Link href="/" className="flex items-center space-x-3">
+            <Image src="https://res.cloudinary.com/dbq5jp6jn/image/upload/v1753127509/Captura_de_pantalla_2025-07-21_164537_qjn0wq.png" alt="Casa del Credito" width={40} height={40} />
             <span className="font-bold text-xl text-primary">Casa del Credito</span>
           </Link>
 
@@ -35,7 +39,7 @@ const Header = () => {
             {navigation.map((item) => (
               <Link
                 key={item.name}
-                to={item.href}
+                href={item.href}
                 className={`text-sm font-medium transition-colors duration-300 hover:text-primary ${
                   isActive(item.href)
                     ? "text-primary font-semibold"
@@ -61,7 +65,7 @@ const Header = () => {
               </a>
             </Button>
             <Button variant="outline" asChild>
-              <Link to="/cart" className="relative">
+              <Link href="/cart" className="relative">
                 <ShoppingCart className="h-5 w-5" />
                 {totalItems > 0 && (
                   <Badge variant="destructive" className="absolute -top-2 -right-2 h-5 w-5 justify-center rounded-full p-0 text-xs">
@@ -91,7 +95,7 @@ const Header = () => {
               {navigation.map((item) => (
                 <Link
                   key={item.name}
-                  to={item.href}
+                  href={item.href}
                   className={`block px-3 py-2 rounded-md text-base font-medium transition-colors duration-300 ${
                     isActive(item.href)
                       ? "text-primary bg-primary/10"
@@ -116,7 +120,7 @@ const Header = () => {
                   </a>
                 </Button>
                 <Button variant="accent" size="sm" className="w-full" asChild>
-                  <Link to="/cart" onClick={() => setIsMenuOpen(false)}>
+                  <Link href="/cart" onClick={() => setIsMenuOpen(false)}>
                      <ShoppingCart className="h-4 w-4" />
                     Ver Carrito ({totalItems})
                   </Link>

@@ -1,5 +1,5 @@
-import { Link } from "react-router-dom";
-import { Button } from "./ui/button.tsx";
+import Link from "next/link";
+import { Button } from "./ui/button";
 import { Calculator, ArrowRight } from "lucide-react";
 
 const SimulatorCTA = () => {
@@ -14,7 +14,7 @@ const SimulatorCTA = () => {
           Usá nuestro simulador de créditos para saber cómo podés financiar tu próxima compra. Es fácil, rápido y transparente.
         </p>
         <Button variant="secondary" size="lg" className="bg-background/20 text-white hover:bg-background/30" asChild>
-          <Link to="/simulator">
+          <Link href="/simulator">
             Probar el Simulador
             <ArrowRight className="h-5 w-5" />
           </Link>

@@ -1,6 +1,0 @@
-{
-  "name": "este es",
-  "description": "Una aplicación de React que utiliza import maps para cargar dependencias directamente en el navegador.",
-  "requestFramePermissions": [],
-  "prompt": ""
-}

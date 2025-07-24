@@ -1,4 +1,4 @@
-import { Button } from "./ui/button.tsx";
+import { Button } from "./ui/button";
 import {
   ArrowRight,
   Calculator,
@@ -6,11 +6,12 @@ import {
   Shield,
   Truck,
 } from "lucide-react";
-import { Link } from "react-router-dom";
+import Link from "next/link";
+import Image from "next/image";
 
-// Using a premium, bright, and modern interior image.
+// Using a premium, bright, and modern interior image placeholder.
 const heroImage =
-  "https://images.unsplash.com/photo-1618220179428-22790b461013?auto=format&fit=crop&q=80&w=2127";
+  "https://placehold.co/1200x900/f0f0f0/333333?text=Hogar+Moderno";
 
 const Hero = () => {
   return (
@@ -41,13 +42,13 @@ const Hero = () => {
               style={{ animationDelay: "0.4s" }}
             >
               <Button variant="hero" size="lg" asChild>
-                <Link to="/catalog">
+                <Link href="/catalog">
                   Explorar Catálogo
                   <ArrowRight />
                 </Link>
               </Button>
               <Button variant="outline" size="lg" asChild>
-                <Link to="/simulator">
+                <Link href="/simulator">
                   <Calculator />
                   Simular Crédito
                 </Link>
@@ -80,10 +81,13 @@ const Hero = () => {
             style={{ animationDelay: "0.3s" }}
           >
             <div className="relative">
-              <img
+              <Image
                 src={heroImage}
                 alt="Moderno y elegante living amueblado"
+                width={1200}
+                height={900}
                 className="rounded-3xl shadow-card aspect-[4/3] w-full object-cover"
+                priority
               />
               <div className="absolute -bottom-4 -right-4 w-32 h-32 bg-primary/10 rounded-full blur-3xl -z-10 animate-pulse"></div>
               <div className="absolute -top-4 -left-4 w-40 h-40 bg-accent/10 rounded-full blur-3xl -z-10 animate-pulse delay-500"></div>

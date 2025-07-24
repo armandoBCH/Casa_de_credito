@@ -1,16 +1,11 @@
-import { Card, CardContent } from "./ui/card.tsx";
-import { Button } from "./ui/button.tsx";
+import { Card, CardContent } from "./ui/card";
+import { Button } from "./ui/button";
 import { 
-  Shield, 
-  Wallet, 
-  Truck, 
-  CreditCard, 
-  Star, 
-  CheckCircle,
-  ArrowRight,
-  Quote
+  Quote,
+  Star
 } from "lucide-react";
-import { Link } from "react-router-dom";
+import Link from "next/link";
+import Image from "next/image";
 
 const testimonials = [
   {
@@ -36,25 +31,25 @@ const testimonials = [
 const categories = [
   {
     name: "Muebles de Living",
-    image: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    image: "https://placehold.co/800x800/A8A29E/FFFFFF?text=Living",
     productCount: 120,
     href: "/catalog?category=living"
   },
   {
     name: "Electrodomésticos",
-    image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    image: "https://placehold.co/800x800/D6DBDF/34495E?text=Electro",
     productCount: 85,
     href: "/catalog?category=electrodomesticos"
   },
   {
     name: "Tecnología",
-    image: "https://images.unsplash.com/photo-1461151304267-38535e780c79?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    image: "https://placehold.co/800x800/5D6D7E/FFFFFF?text=Tecnologia",
     productCount: 95,
     href: "/catalog?category=tecnologia"
   },
   {
     name: "Dormitorio",
-    image: "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    image: "https://placehold.co/800x800/85929E/FFFFFF?text=Dormitorio",
     productCount: 75,
     href: "/catalog?category=dormitorio"
   }
@@ -77,15 +72,17 @@ const Categories = () => {
           {categories.map((category, index) => (
             <Link
               key={category.name}
-              to={category.href}
+              href={category.href}
               className="group animate-slide-up"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
               <Card className="overflow-hidden border-border hover:shadow-card transition-all duration-300 hover:scale-105">
                 <div className="relative h-64 overflow-hidden">
-                  <img
+                  <Image
                     src={category.image}
                     alt={category.name}
+                    width={800}
+                    height={800}
                     className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
@@ -175,7 +172,7 @@ const Testimonials = () => {
 const CTA = () => {
   return (
     <section className="py-20 bg-gradient-to-br from-primary to-primary-light text-white overflow-hidden relative">
-      <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3')] opacity-10 bg-cover bg-center"></div>
+      <div className="absolute inset-0 bg-[url('https://placehold.co/1920x1080/e97451/ffffff?text=Fondo+Abstracto')] opacity-10 bg-cover bg-center"></div>
       <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <h2 className="text-3xl md:text-4xl font-bold mb-6 animate-fade-in">
           Empezá a Equipar tu Hogar Hoy Mismo
@@ -185,12 +182,12 @@ const CTA = () => {
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center animate-scale-in">
           <Button variant="secondary" size="lg" asChild>
-            <Link to="/catalog">
+            <Link href="/catalog">
               Ver Productos
             </Link>
           </Button>
           <Button variant="outline" size="lg" className="bg-white/10 border-white/20 text-white hover:bg-white/20" asChild>
-            <Link to="/contact">
+            <Link href="/contact">
               Contactar Ahora
             </Link>
           </Button>

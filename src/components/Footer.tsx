@@ -1,6 +1,7 @@
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import { Phone, Mail, MapPin, Instagram } from "lucide-react";
-import { Button } from "./ui/button.tsx";
+import { Button } from "./ui/button";
+import Image from "next/image";
 
 const Footer = () => {
   return (
@@ -10,8 +11,8 @@ const Footer = () => {
         <div className="py-16 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-12 gap-8">
           {/* Company Info */}
           <div className="space-y-6 lg:col-span-3">
-            <Link to="/" className="flex items-center space-x-3">
-              <img src="https://res.cloudinary.com/dbq5jp6jn/image/upload/v1753127509/Captura_de_pantalla_2025-07-21_164537_qjn0wq.png" alt="Casa del Credito" className="h-10 w-10" />
+            <Link href="/" className="flex items-center space-x-3">
+              <Image src="https://res.cloudinary.com/dbq5jp6jn/image/upload/v1753127509/Captura_de_pantalla_2025-07-21_164537_qjn0wq.png" alt="Casa del Credito" width={40} height={40} />
               <span className="font-bold text-xl">Casa del Credito</span>
             </Link>
             <p className="text-primary-foreground/80 leading-relaxed">
@@ -33,7 +34,7 @@ const Footer = () => {
               ].map((link) => (
                 <Link
                   key={link.name}
-                  to={link.href}
+                  href={link.href}
                   className="block text-primary-foreground/80 hover:text-accent transition-colors duration-300"
                 >
                   {link.name}
@@ -56,7 +57,7 @@ const Footer = () => {
               ].map((category) => (
                 <Link
                   key={category}
-                  to={`/catalog?category=${category.toLowerCase().replace(/\s+/g, '-')}`}
+                  href={`/catalog?category=${category.toLowerCase().replace(/\s+/g, '-')}`}
                   className="block text-primary-foreground/80 hover:text-accent transition-colors duration-300"
                 >
                   {category}
@@ -135,10 +136,10 @@ const Footer = () => {
               © 2024 Casa del Credito. Todos los derechos reservados.
             </div>
             <div className="flex space-x-6 text-sm">
-              <Link to="/privacy" className="text-primary-foreground/80 hover:text-accent transition-colors">
+              <Link href="/privacy" className="text-primary-foreground/80 hover:text-accent transition-colors">
                 Política de Privacidad
               </Link>
-              <Link to="/terms" className="text-primary-foreground/80 hover:text-accent transition-colors">
+              <Link href="/terms" className="text-primary-foreground/80 hover:text-accent transition-colors">
                 Términos y Condiciones
               </Link>
             </div>

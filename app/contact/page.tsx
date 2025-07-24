@@ -1,15 +1,17 @@
+"use client";
+
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { toast } from "sonner";
-import Header from "../components/Header.tsx";
-import Footer from "../components/Footer.tsx";
-import { Button } from "../components/ui/button.tsx";
-import { Input } from "../components/ui/input.tsx";
-import { Textarea } from "../components/ui/textarea.tsx";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../components/ui/select.tsx";
-import { Card, CardContent, CardHeader, CardTitle } from "../components/ui/card.tsx";
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "../components/ui/form.tsx";
+import Header from "../../src/components/Header";
+import Footer from "../../src/components/Footer";
+import { Button } from "../../src/components/ui/button";
+import { Input } from "../../src/components/ui/input";
+import { Textarea } from "../../src/components/ui/textarea";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../../src/components/ui/select";
+import { Card, CardContent, CardHeader, CardTitle } from "../../src/components/ui/card";
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "../../src/components/ui/form";
 import { Phone, Mail, MapPin, Clock } from "lucide-react";
 
 const contactFormSchema = z.object({

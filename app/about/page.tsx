@@ -1,8 +1,8 @@
-import Header from "../components/Header.tsx";
-import Footer from "../components/Footer.tsx";
-import { Card, CardContent } from "../components/ui/card.tsx";
-import { Button } from "../components/ui/button.tsx";
-import { Badge } from "../components/ui/badge.tsx";
+import Header from "../../src/components/Header";
+import Footer from "../../src/components/Footer";
+import { Card, CardContent } from "../../src/components/ui/card";
+import { Button } from "../../src/components/ui/button";
+import { Badge } from "../../src/components/ui/badge";
 import { 
   Heart, 
   Users, 
@@ -15,7 +15,7 @@ import {
   TrendingUp,
   Phone
 } from "lucide-react";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 
 const values = [
   {
@@ -145,7 +145,7 @@ const About = () => {
               
               <div className="relative animate-slide-up">
                 <img
-                  src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80"
+                  src="https://placehold.co/2340x1560/f0f0f0/333333?text=Equipo+Sonriendo"
                   alt="Familia en el hogar"
                   className="rounded-2xl shadow-card"
                 />
@@ -339,12 +339,12 @@ const About = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button variant="secondary" size="lg" asChild>
-                <Link to="/catalog">
+                <Link href="/catalog">
                   Ver Productos
                 </Link>
               </Button>
               <Button variant="outline" size="lg" className="bg-white/10 border-white/20 text-white hover:bg-white/20" asChild>
-                <Link to="/contact">
+                <Link href="/contact">
                   Contacto
                 </Link>
               </Button>
