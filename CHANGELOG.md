@@ -9,6 +9,7 @@ El formato se basa en [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), 
 ## [Unreleased]
 
 ### Fixed
+- **2024-07-25:** Solucionado error de compilación en Vercel al renombrar `postcss.config.js` a `postcss.config.cjs`. Esto resuelve el error `ReferenceError: module is not defined in ES module scope` causado por la configuración `"type": "module"` en `package.json`.
 - **2024-07-24:** Corregidas las rutas de importación en toda la aplicación para usar consistentemente el alias de ruta `@/` en lugar de rutas relativas o alias incorrectos. Esto soluciona los errores `Module not found` durante el proceso de compilación de Vercel.
 - **2024-07-24:** Corregido el conflicto de dependencias de `eslint` (`ERESOLVE`) al degradar `eslint` a la versión 8 y ajustar los paquetes relacionados para asegurar la compatibilidad con `eslint-config-next`.
 

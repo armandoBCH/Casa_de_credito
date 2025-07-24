@@ -8,6 +8,7 @@ Este documento proporciona el contexto esencial para entender y desarrollar la a
 - **Negocio:** Venta de muebles, electrodomésticos y productos para el hogar.
 - **Propuesta de Valor Principal:** Ofrecer productos de calidad con opciones de financiamiento accesibles y transparentes (cuotas, descuentos).
 - **Público Objetivo:** Familias de Olavarría, Argentina y alrededores.
+- **Plataforma de Despliegue:** Vercel.
 - **Nota Histórica:** La aplicación es el resultado de una migración completa desde una arquitectura Single-Page Application (SPA) a Next.js, consolidando todo el frontend en esta tecnología.
 
 ## 2. Pila Tecnológica (Tech Stack)
