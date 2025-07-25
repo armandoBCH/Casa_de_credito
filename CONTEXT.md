@@ -9,7 +9,7 @@ Este documento proporciona el contexto esencial para entender y desarrollar la a
 - **Propuesta de Valor Principal:** Ofrecer productos de calidad con opciones de financiamiento accesibles y transparentes (cuotas, descuentos).
 - **Público Objetivo:** Familias de Olavarría, Argentina y alrededores.
 - **Plataforma de Despliegue:** Vercel.
-- **Nota Histórica:** La aplicación es el resultado de una migración completa desde una arquitectura Single-Page Application (SPA) a Next.js, consolidando todo el frontend en esta tecnología.
+- **Nota Histórica:** La migración a Next.js está completa. Archivos heredados como `index.html`, `index.tsx` y `metadata.json` son obsoletos, no tienen ninguna función y deben ser ignorados o eliminados.
 
 ## 2. Pila Tecnológica (Tech Stack)
 
@@ -77,7 +77,6 @@ Este documento proporciona el contexto esencial para entender y desarrollar la a
 ## 5. Directrices para Desarrollo (IA)
 
 -   **Consistencia de UI:** Para nuevos elementos visuales, **utilizar siempre** los componentes de `src/components/ui/`.
--   **Rutas de Importación:** Utilizar siempre el alias de ruta `@/` configurado en `tsconfig.json` para importar módulos desde el directorio `src/`. Ejemplo: `import Component from '@/components/Component';`. Evitar rutas relativas (`../../`).
 -   **Manejo de Estado:**
     -   Para lógica del carrito, usar el hook `useCart()`.
     -   Para fetching de nuevos datos del servidor (futuro), integrar con TanStack Query.
@@ -85,3 +84,9 @@ Este documento proporciona el contexto esencial para entender y desarrollar la a
 -   **Datos:** Por ahora, cualquier modificación o adición de productos se debe realizar en `src/data/products.ts`.
 -   **Responsividad:** Todos los componentes deben ser mobile-first y completamente responsivos.
 -   **Accesibilidad:** Priorizar el uso de HTML semántico y atributos ARIA. `shadcn/ui` ya proporciona una base sólida.
+
+### Directrices Críticas (Resolución de Errores de Build)
+
+-   **Rutas de Importación:** Utilizar **siempre** el alias de ruta `@/` configurado en `tsconfig.json` para importar módulos desde el directorio `src/` (ej. `import Component from '@/components/Component';`). No usar rutas relativas (`../../`). La inconsistencia en esto fue una fuente de errores de build recientemente corregida.
+-   **No incluir extensiones de archivo:** Nunca importes módulos con su extensión (p. ej., `import ... from './button.tsx'`). Esto causa un error de compilación de TypeScript (`Type error: An import path can only end with a '.tsx' extension when 'allowImportingTsExtensions' is enabled.`). La forma correcta es `import ... from './button'`.
+-   **Configuración de PostCSS:** El archivo `postcss.config.js` utiliza sintaxis de Módulos ES (`export default`) para ser compatible con la configuración `"type": "module"` del proyecto. No se debe cambiar su sintaxis o renombrarlo.

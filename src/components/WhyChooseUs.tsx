@@ -3,7 +3,7 @@ import {
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "./ui/accordion";
+} from "@/components/ui/accordion";
 import { CreditCard, Truck, ShieldCheck, LifeBuoy } from "lucide-react";
 import Image from "next/image";
 
