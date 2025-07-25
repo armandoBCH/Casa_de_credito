@@ -19,12 +19,12 @@ export type Product = {
 };
 
 // Image URLs
-const sofaImage = "https://placehold.co/800x600/e97451/ffffff?text=Sofa+Moderno";
-const tvImage = "https://placehold.co/800x600/333333/ffffff?text=Smart+TV";
-const appliancesImage = "https://placehold.co/800x600/cccccc/333333?text=Combo+Cocina";
-const diningImage = "https://placehold.co/800x600/a39a92/ffffff?text=Comedor";
-const notebookImage = "https://placehold.co/800x600/2c3e50/ffffff?text=Notebook+Gamer";
-const fridgeImage = "https://placehold.co/800x600/bdc3c7/2c3e50?text=Heladera";
+const sofaImage = "https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?q=80&w=2070&auto=format&fit=crop";
+const tvImage = "https://images.unsplash.com/photo-1593359677879-a4bb92f82ac7?q=80&w=1974&auto=format&fit=crop";
+const appliancesImage = "https://images.unsplash.com/photo-1604579294584-13143588a44c?q=80&w=2070&auto=format&fit=crop";
+const diningImage = "https://images.unsplash.com/photo-1617806118233-18e1de247200?q=80&w=2070&auto=format&fit=crop";
+const notebookImage = "https://images.unsplash.com/photo-1618022035342-888c34988a83?q=80&w=2070&auto=format&fit=crop";
+const fridgeImage = "https://images.unsplash.com/photo-1616410221424-0c2415124039?q=80&w=1974&auto=format&fit=crop";
 
 export const products: Product[] = [
   {
@@ -36,7 +36,7 @@ export const products: Product[] = [
     installmentPrice: Math.round(89999 / 12),
     installments: 12,
     image: sofaImage,
-    images: [sofaImage, "https://placehold.co/500x500/e46a41/ffffff?text=Vista+2", "https://placehold.co/500x500/d85e35/ffffff?text=Vista+3"],
+    images: [sofaImage, "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?q=80&w=2070&auto=format&fit=crop", "https://images.unsplash.com/photo-1549488494-646e72c80a84?q=80&w=2070&auto=format&fit=crop"],
     discount: 20,
     isPromoted: true,
     shortDescription: "Renová tu living con este juego de sillones de diseño contemporáneo y máximo confort. Tapizado en tela de alta resistencia.",
@@ -60,7 +60,7 @@ export const products: Product[] = [
     installmentPrice: Math.round(129999 / 12),
     installments: 12,
     image: tvImage,
-    images: [tvImage, "https://placehold.co/500x500/222222/ffffff?text=Detalle+Pantalla", "https://placehold.co/500x500/444444/ffffff?text=Control+Remoto"],
+    images: [tvImage, "https://images.unsplash.com/photo-1601944177324-f23675a2f583?q=80&w=2070&auto=format&fit=crop", "https://images.unsplash.com/photo-1522869635100-9f4c5e86aa37?q=80&w=2070&auto=format&fit=crop"],
     discount: 15,
     isPromoted: false,
     shortDescription: "Viví una experiencia visual inmersiva con colores vibrantes y detalles nítidos gracias a la tecnología 4K UHD.",
@@ -84,7 +84,7 @@ export const products: Product[] = [
     installmentPrice: Math.round(199999 / 12),
     installments: 12,
     image: appliancesImage,
-    images: [appliancesImage, "https://placehold.co/500x500/d0d0d0/333333?text=Detalle+Cocina"],
+    images: [appliancesImage, "https://images.unsplash.com/photo-1616429578496-978d38b55e42?q=80&w=1974&auto=format&fit=crop"],
     discount: 25,
     isPromoted: true,
     shortDescription: "Equipá tu cocina con este combo de alta gama en acero inoxidable. Incluye heladera, cocina y microondas.",

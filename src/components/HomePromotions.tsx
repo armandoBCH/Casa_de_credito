@@ -9,19 +9,19 @@ const promotionsData = [
   {
     title: "Hasta 50% OFF",
     description: "En productos seleccionados por Black Friday.",
-    image: "https://placehold.co/800x600/111111/FFFFFF?text=50%25+OFF",
+    image: "https://images.unsplash.com/photo-1511556532299-8abe647faf39?q=80&w=1974&auto=format&fit=crop",
     link: "/promotions"
   },
   {
     title: "12 Cuotas Sin Interés",
     description: "En toda la tienda con tarjetas de crédito.",
-    image: "https://placehold.co/800x600/3498DB/FFFFFF?text=12+Cuotas",
+    image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?q=80&w=2070&auto=format&fit=crop",
     link: "/promotions"
   },
   {
     title: "Combos Exclusivos",
     description: "Equipá tu living o cocina y ahorrá.",
-    image: "https://placehold.co/800x600/E74C3C/FFFFFF?text=Combos",
+    image: "https://images.unsplash.com/photo-1598928636135-d146006a9a5a?q=80&w=2070&auto=format&fit=crop",
     link: "/promotions"
   },
 ];

@@ -64,7 +64,7 @@ const WhyChooseUs = () => {
           </div>
           <div className="relative animate-scale-in" style={{animationDelay: '0.2s'}}>
             <Image 
-              src="https://placehold.co/2070x1380/E8F8F5/17A589?text=Confianza"
+              src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=1976&auto=format&fit=crop"
               alt="Equipo de Casa del Credito brindando confianza a un cliente."
               width={2070}
               height={1380}

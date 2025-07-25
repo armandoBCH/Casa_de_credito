@@ -9,9 +9,9 @@ import {
 import Link from "next/link";
 import Image from "next/image";
 
-// Using a premium, bright, and modern interior image placeholder.
+// Imagen de alta calidad para el héroe
 const heroImage =
-  "https://placehold.co/1200x900/f0f0f0/333333?text=Hogar+Moderno";
+  "https://images.unsplash.com/photo-1558002038-1055907df827?q=80&w=2070&auto=format&fit=crop";
 
 const Hero = () => {
   return (

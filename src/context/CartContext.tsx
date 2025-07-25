@@ -1,3 +1,4 @@
+
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 import { Product } from '@/data/products';
 
@@ -27,16 +28,21 @@ export const useCart = () => {
 };
 
 export const CartProvider = ({ children }: { children: ReactNode }) => {
-  const [cartItems, setCartItems] = useState<CartItem[]>(() => {
+  const [cartItems, setCartItems] = useState<CartItem[]>([]);
+
+  // Hydrate state from localStorage on client side
+  useEffect(() => {
     try {
       const localData = localStorage.getItem('cartItems');
-      return localData ? JSON.parse(localData) : [];
+      if (localData) {
+        setCartItems(JSON.parse(localData));
+      }
     } catch (error) {
       console.error("Could not parse cart items from localStorage", error);
-      return [];
     }
-  });
+  }, []);
 
+  // Persist state to localStorage on change
   useEffect(() => {
     localStorage.setItem('cartItems', JSON.stringify(cartItems));
   }, [cartItems]);

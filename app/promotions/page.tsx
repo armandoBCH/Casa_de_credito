@@ -5,6 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Calendar, Clock, Gift, Percent, Star, Tag } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 
 const promotions = [
   {
@@ -14,7 +15,7 @@ const promotions = [
     discount: 50,
     validUntil: "2024-11-30",
     isHot: true,
-    image: "https://placehold.co/800x600/000000/FFFFFF?text=Black+Friday",
+    image: "https://images.unsplash.com/photo-1508685096489-7f7406521554?q=80&w=2070&auto=format&fit=crop",
     terms: "Válido hasta agotar stock. No acumulable con otras promociones."
   },
   {
@@ -24,7 +25,7 @@ const promotions = [
     discount: 0,
     validUntil: "2024-12-31",
     isHot: false,
-    image: "https://placehold.co/800x600/3498DB/FFFFFF?text=12+Cuotas",
+    image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?q=80&w=2070&auto=format&fit=crop",
     terms: "Aplicable a pagos con tarjeta de crédito/débito."
   },
   {
@@ -34,7 +35,7 @@ const promotions = [
     discount: 30,
     validUntil: "2024-12-15",
     isHot: true,
-    image: "https://placehold.co/800x600/E74C3C/FFFFFF?text=Combo+Living",
+    image: "https://images.unsplash.com/photo-1598928636135-d146006a9a5a?q=80&w=2070&auto=format&fit=crop",
     terms: "Combo armado fijo. Entrega e instalación incluida."
   },
   {
@@ -44,7 +45,7 @@ const promotions = [
     discount: 25,
     validUntil: "2024-11-25",
     isHot: false,
-    image: "https://placehold.co/800x600/95A5A6/FFFFFF?text=Electro",
+    image: "https://images.unsplash.com/photo-1626806819282-2c1dc01a5e0c?q=80&w=1974&auto=format&fit=crop",
     terms: "Instalación técnica incluida. Garantía extendida por 2 años."
   },
   {
@@ -54,7 +55,7 @@ const promotions = [
     discount: 6,
     validUntil: "2024-12-31",
     isHot: true,
-    image: "https://placehold.co/800x600/2ECC71/FFFFFF?text=Transferencia",
+    image: "https://images.unsplash.com/photo-1518458028785-8fbcd101ebb9?q=80&w=2070&auto=format&fit=crop",
     terms: "El descuento se aplica al finalizar la compra."
   },
   {
@@ -64,7 +65,7 @@ const promotions = [
     discount: 0,
     validUntil: "2024-12-31",
     isHot: false,
-    image: "https://placehold.co/800x600/F1C40F/FFFFFF?text=Referidos",
+    image: "https://images.unsplash.com/photo-1569098642221-5036e133c36b?q=80&w=2070&auto=format&fit=crop",
     terms: "Válido para compras superiores a $50.000. Un cupón por persona."
   }
 ];
@@ -86,9 +87,11 @@ const PromotionCard = ({ promotion }: { promotion: typeof promotions[0] }) => {
       <div className="relative">
         {/* Promotion Image */}
         <div className="h-48 overflow-hidden">
-          <img
+          <Image
             src={promotion.image}
             alt={promotion.title}
+            width={800}
+            height={600}
             className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
           />
         </div>

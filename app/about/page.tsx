@@ -18,6 +18,7 @@ import {
   Phone
 } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 
 const values = [
   {
@@ -146,9 +147,11 @@ const About = () => {
               </div>
               
               <div className="relative animate-slide-up">
-                <img
-                  src="https://placehold.co/2340x1560/f0f0f0/333333?text=Equipo+Sonriendo"
-                  alt="Familia en el hogar"
+                <Image
+                  src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=2071&auto=format&fit=crop"
+                  alt="Equipo de Casa del Credito sonriendo"
+                  width={2340}
+                  height={1560}
                   className="rounded-2xl shadow-card"
                 />
                 <div className="absolute -bottom-6 -left-6 bg-primary text-primary-foreground p-6 rounded-2xl shadow-primary">

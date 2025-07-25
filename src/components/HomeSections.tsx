@@ -31,25 +31,25 @@ const testimonials = [
 const categories = [
   {
     name: "Muebles de Living",
-    image: "https://placehold.co/800x800/A8A29E/FFFFFF?text=Living",
+    image: "https://images.unsplash.com/photo-1540574163026-643ea20ade25?q=80&w=2070&auto=format&fit=crop",
     productCount: 120,
     href: "/catalog?category=living"
   },
   {
     name: "Electrodomésticos",
-    image: "https://placehold.co/800x800/D6DBDF/34495E?text=Electro",
+    image: "https://images.unsplash.com/photo-1626806819282-2c1dc01a5e0c?q=80&w=1974&auto=format&fit=crop",
     productCount: 85,
     href: "/catalog?category=electrodomesticos"
   },
   {
     name: "Tecnología",
-    image: "https://placehold.co/800x800/5D6D7E/FFFFFF?text=Tecnologia",
+    image: "https://images.unsplash.com/photo-1593642702821-c8da6771f0c6?q=80&w=2069&auto=format&fit=crop",
     productCount: 95,
     href: "/catalog?category=tecnologia"
   },
   {
     name: "Dormitorio",
-    image: "https://placehold.co/800x800/85929E/FFFFFF?text=Dormitorio",
+    image: "https://images.unsplash.com/photo-1565538810643-b5bdb714032a?q=80&w=2070&auto=format&fit=crop",
     productCount: 75,
     href: "/catalog?category=dormitorio"
   }
@@ -172,7 +172,7 @@ const Testimonials = () => {
 const CTA = () => {
   return (
     <section className="py-20 bg-gradient-to-br from-primary to-primary-light text-white overflow-hidden relative">
-      <div className="absolute inset-0 bg-[url('https://placehold.co/1920x1080/e97451/ffffff?text=Fondo+Abstracto')] opacity-10 bg-cover bg-center"></div>
+      <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1553095066-5014bc7b7f2d?q=80&w=2071&auto=format&fit=crop')] opacity-10 bg-cover bg-center"></div>
       <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <h2 className="text-3xl md:text-4xl font-bold mb-6 animate-fade-in">
           Empezá a Equipar tu Hogar Hoy Mismo
