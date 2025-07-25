@@ -9,7 +9,7 @@ Este documento proporciona el contexto esencial para entender y desarrollar la a
 - **Propuesta de Valor Principal:** Ofrecer productos de calidad con opciones de financiamiento accesibles y transparentes (cuotas, descuentos).
 - **Público Objetivo:** Familias de Olavarría, Argentina y alrededores.
 - **Plataforma de Despliegue:** Vercel.
-- **Nota Histórica:** La migración a Next.js está completa. Archivos heredados como `index.html`, `index.tsx` y `metadata.json` son obsoletos, no tienen ninguna función y deben ser ignorados o eliminados.
+- **Nota Histórica:** La migración a Next.js está completa. Sin embargo, persisten archivos heredados de la configuración anterior (`index.html`, `index.tsx`, `metadata.json`) que son obsoletos y deben ser eliminados para mantener la limpieza del proyecto.
 
 ## 2. Pila Tecnológica (Tech Stack)
 
@@ -50,6 +50,7 @@ Este documento proporciona el contexto esencial para entender y desarrollar la a
 │   └── lib/
 │       └── utils.ts      # Funciones de utilidad (ej. `cn` para clases de Tailwind).
 │
+├── next.config.js        # Configuración de Next.js (ej. dominios de imágenes).
 └── package.json          # Dependencias y scripts del proyecto.
 ```
 
